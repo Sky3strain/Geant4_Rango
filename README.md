@@ -1,4 +1,4 @@
-# Geant4_MSFC - Rango Simulation
+# Geant4_Rango - Rango Simulation
 
 This is a Geant4-based simulation code developed for a Marshall Space Flight Center internship (Summer 2026)
 
