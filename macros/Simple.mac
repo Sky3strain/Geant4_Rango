@@ -1,0 +1,10 @@
+#Simple Test Particle
+/gps/position 0.0 0.0 -20.0 cm
+/gps/direction 0 0 1
+/gps/energy 662 keV
+/gps/particle gamma
+/gps/pos/type Beam
+/gps/pos/shape Circle 
+/gps/pos/radius 7 cm
+/gps/source/list
+/World/SetWorldMaterial Vaccum
