@@ -43,23 +43,18 @@
 #include "G4SystemOfUnits.hh"
 #include "G4UnitsTable.hh"
 #include "G4AnalysisManager.hh"//For Root
+// #include "TTree.h" //For Root trees
+// #include "TFile.h" //For Root file
+#include <TFile.h>
+// #include <TH1D.h>
+#include <TTree.h>
 
 namespace Rango
 {
+
 RunAction::RunAction()
 {
   // add new units for dose
-  //For root files 
-  G4RunManager::GetRunManager()->SetPrintProgress(1);
-  auto analysisManager = G4AnalysisManager::Instance();
-  analysisManager->SetVerboseLevel(1);
-  analysisManager->SetNtupleMerging(true);
-
-  //Create Ntuple
-  analysisManager->CreateH1("Edep", "Deposited Energy", 100, 0., 800*keV);
-  analysisManager->CreateNtupleDColumn("eDep");
-  analysisManager->FinishNtuple();
-
   const G4double milligray = 1.e-3 * gray;
   const G4double microgray = 1.e-6 * gray;
   const G4double nanogray = 1.e-9 * gray;
@@ -74,6 +69,27 @@ RunAction::RunAction()
   G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
   accumulableManager->Register(fEdep);
   accumulableManager->Register(fEdep2);
+
+  edepTree = new TTree("edepTree", "Edep");
+  edepTree->Branch("Energy", &fEnergy, "Energy/D");
+  edepTree->Branch("Edep", &Edep, "Edep/D");
+
+  transTree = new TTree("transTree", "Transmission");
+  transTree->Branch("Energy", &fEnergy, "Energy/D");
+  transTree->Branch("Counter", &fCounter, "Counter/I");
+}
+
+RunAction::~RunAction(){
+  G4String fileNameTrans = "transmissionBe1MM.root";
+  fRootFileTrans = new TFile(fileNameTrans, "RECREATE");
+  transTree->Write();
+  fRootFileTrans->Close();
+
+  G4String fileNameEdep = "energyDep.root";
+  fRootFileEdep = new TFile(fileNameEdep, "RECREATE");
+  edepTree->Write();
+  fRootFileEdep->Close();
+
 }
 
   
@@ -85,11 +101,6 @@ void RunAction::BeginOfRunAction(const G4Run*)
   // reset accumulables to their initial values
   G4AccumulableManager* accumulableManager = G4AccumulableManager::Instance();
   accumulableManager->Reset();
-
-  //Open the root file
-  auto analysisManager = G4AnalysisManager::Instance();
-  G4String fileName = "data.root";
-  analysisManager->OpenFile(fileName);
 }
 
   
@@ -155,12 +166,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
   G4cout << " Absorbed dose per run in scoring volume = edep/mass = " << G4BestUnit(dose, "Dose")
          << "; rms = " << G4BestUnit(rmsDose, "Dose") << G4endl;
         //  << "------------------------------------------------------------" << G4endl <;
-
-  //save histograms and ntuple
-  analysisManager->Write();
-  analysisManager->CloseFile();
 }
-
   
 void RunAction::AddEdep(G4double edep)
 {

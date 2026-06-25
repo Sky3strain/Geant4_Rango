@@ -9,9 +9,8 @@ project(Rango)
 # See the documentation for a guide on how to enable/disable specific components
 #
 find_package(Geant4 REQUIRED ui_all vis_all)
-
 #Locate the root package
-#find_package(ROOT REQUIRED COMPONENTS RIO Net)
+find_package(ROOT REQUIRED COMPONENTS Core RIO Tree)
 #include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 #----------------------------------------------------------------------------
@@ -25,11 +24,17 @@ file(GLOB headers ${PROJECT_SOURCE_DIR}/include/*.hh)
 # Add the executable, use our local headers, and link it to the Geant4 libraries
 #
 #Add root librar stuff
-#target_link_libaries(Event PUBLIC ROOT::RIO ROOT::Net)
 
 add_executable(Rango Rango.cc ${sources} ${headers})
 target_include_directories(Rango PRIVATE include)
 target_link_libraries(Rango PRIVATE ${Geant4_LIBRARIES})
+target_link_libraries(Rango
+    PRIVATE
+        ${Geant4_LIBRARIES}
+        ROOT::Core
+        ROOT::RIO
+        ROOT::Tree
+)
 
 #----------------------------------------------------------------------------
 # Copy all scripts to the build directory, i.e. the directory in which we

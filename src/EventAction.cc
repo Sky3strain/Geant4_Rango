@@ -43,6 +43,10 @@
 #include "G4LogicalVolume.hh"
 #include "G4SteppingManager.hh"
 
+#include <TFile.h>
+// #include <TH1D.h>
+#include <TTree.h>
+
 //Include things required for txt file
 // static std::ofstream dataFile("output.root");
 // static bool first = true;
@@ -62,7 +66,6 @@ void EventAction::BeginOfEventAction(const G4Event* event)
   fBeCounter = 0.;
   fDetCounter = 0.;
 }
-
   
 void EventAction::EndOfEventAction(const G4Event* event)
 {
@@ -71,34 +74,38 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   //ste up run manager
   G4RunManager *runManager = G4RunManager::GetRunManager();
-  // G4int totalEvent = runManager->GetNumberOfEventsToBeProcessed();
 
   //Print event data
   G4cout <<"\nEvent"<<eventID<<" Summary: Total deposited energy = "
      <<fEdep / keV <<"keV"<<G4endl;
-  // G4cout<<"Final transmission volume: "<< volumeName<<G4endl;
-  G4cout << "\n" << G4endl;
-  //AnalysisManager instance
-  auto analysisManager = G4AnalysisManager::Instance();
 
   //Get Particle Energy
-  const auto generatorAction = static_cast<const PrimaryGeneratorAction*>(
-    G4RunManager::GetRunManager()->GetUserPrimaryGeneratorAction());
+  const auto generatorAction = static_cast<const PrimaryGeneratorAction*>(G4RunManager::GetRunManager()->GetUserPrimaryGeneratorAction());
   const G4GeneralParticleSource* particleGun = generatorAction->GetParticleGun();
   G4double particleEnergy = particleGun->GetParticleEnergy();
 
-  //Fill ntuples
-  analysisManager->FillH1(0, fEdep);
-  analysisManager->FillNtupleDColumn(0, fEdep);
+  G4cout<<"PRINTING: "<< fEdep /keV<<G4endl;
+  G4cout<<"PRINTING: "<< particleEnergy /keV<<G4endl;
+  fRunAction->SetEnergy(particleEnergy / keV);
+  fRunAction->SetEdep(fEdep / keV);
 
+  TTree* edepTree = fRunAction->GetEdepTree();
+  edepTree->Fill();
+
+  G4cout << "\n" << G4endl;
+  // //AnalysisManager instance
+  // auto analysisManager = G4AnalysisManager::Instance();
+  
   G4int transmissionCount = GetTransmissionCount();
   G4int detectorCount = GetDetectorCount();
+  G4int totalCount = detectorCount+transmissionCount;
 
-  //To save to text file
-  if (first) {
-      // dataFile << "Particle Energy (keV), beCounter+detCount" << std::endl;
-      first = false;
-  }
-  dataFile <<particleEnergy/keV<<","<< detectorCount+transmissionCount<<std::endl;
+  //Write to Root file
+  fRunAction->SetCounter(totalCount);
+
+  TTree* transTree = fRunAction->GetTransTree();
+  transTree->Fill();
+  
 }
+
 }

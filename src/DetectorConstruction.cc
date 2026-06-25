@@ -129,12 +129,12 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   // Define size of detector
   innerRadius = 0 *cm;
   outerRadius = 6.35 *cm;
-  detHz = 1.27 * cm;
+  detHz = 1.5 * cm;
   detPhimin = 0. * deg;
   detPhimax = 360. * deg;
 
   // //Define detector material
-  detMaterial = G4Material::GetMaterial("NaI");
+  detMaterial = G4Material::GetMaterial("NaI_Tl");
 
   //Make the Detector a cylinder
   auto detector = new G4Tubs("Detector", //its name
@@ -173,7 +173,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   beWinHz = 0.2*mm;
 
   //Window material
-  winMaterial = G4Material::GetMaterial("Be");
+  winMaterial = G4Material::GetMaterial("Teflon");
 
   //offset of beryllium window
   offset = -1*((beWinHz/2)+(detHz/2));

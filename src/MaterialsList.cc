@@ -17,7 +17,7 @@ MaterialsList* MaterialsList::GetInstance()
 //MaterialsList constrcutor
 MaterialsList::MaterialsList() 
 //Define the materials
-: NaI(0), CsI(0), Air(0), Vaccum(0), Be(0), Mg(0), Al(0), Teflon(0)
+: NaI(0), CsI(0), Air(0), Vaccum(0), Be(0), Mg(0), Al(0), Teflon(0), CdTe(0), CsI_Na(0), CsI_Tl(0), CeBr3(0), NaI_Tl(0)
 {
   if( instance == 0 ){
       instance = this; // give the constructor a pointer to itself
@@ -36,6 +36,11 @@ MaterialsList::MaterialsList()
    DefineMaterial("Mg");
    DefineMaterial("Al");
    DefineMaterial("Teflon");
+   DefineMaterial("CdTe");
+   DefineMaterial("CsI_Na");
+   DefineMaterial("CsI_Tl");
+   DefineMaterial("CeBr3");
+   DefineMaterial("NaI_Tl");
 }
 
 //Destructor
@@ -50,6 +55,13 @@ MaterialsList::~MaterialsList()
   delete Mg;
   delete Al;
   delete Teflon;
+
+  delete CdTe;
+  delete CsI_Na;
+  delete CsI_Tl;
+  delete CeBr3;
+  delete NaI_Tl;
+
 }
 
 //See if the material exists
@@ -108,6 +120,31 @@ G4bool MaterialsList::DefineMaterial( G4String sMaterialNameIn )
    else if( sMaterialNameIn == "Teflon"){
       Teflon = nist->FindOrBuildMaterial("G4_TEFLON");
       Teflon->SetName( sMaterialNameIn);
+   }
+   else if (sMaterialNameIn == "CdTe") {
+      CdTe = new G4Material("CdTe", density=5.85 * g / cm3, numberOfComponents=2);
+      CdTe->AddElement(nist->FindOrBuildElement("Cd"), 1);
+      CdTe->AddElement(nist->FindOrBuildElement("Te"), 1);
+   }
+   else if (sMaterialNameIn == "CeBr3") {
+      CeBr3 = new G4Material("CeBr3", density=5.10 * g / cm3, numberOfComponents=2);
+      CeBr3->AddElement(nist->FindOrBuildElement("Ce"), 1);
+      CeBr3->AddElement(nist->FindOrBuildElement("Br"), 3);
+   }
+   else if (sMaterialNameIn == "NaI_Tl") {
+      NaI_Tl = new G4Material("NaI_Tl", density=3.67 * g / cm3, numberOfComponents=2);
+      NaI_Tl->AddMaterial(nist->FindOrBuildMaterial("G4_SODIUM_IODIDE"), 99.5 * perCent);
+      NaI_Tl->AddMaterial(nist->FindOrBuildMaterial("G4_Tl"), 0.5 * perCent);
+   }
+   else if (sMaterialNameIn == "CsI_Na") {
+      CsI_Na = new G4Material("CsI_Na", density=4.51 * g / cm3, numberOfComponents=2);
+      CsI_Na->AddMaterial(nist->FindOrBuildMaterial("G4_CESIUM_IODIDE"), 99.6 * perCent);
+      CsI_Na->AddMaterial(nist->FindOrBuildMaterial("G4_Na"), 0.4 * perCent);
+   }
+   else if (sMaterialNameIn == "CsI_Tl") {
+      CsI_Tl = new G4Material("CsI_Tl", density=4.51 * g / cm3, numberOfComponents=2);
+      CsI_Tl->AddMaterial(nist->FindOrBuildMaterial("G4_CESIUM_IODIDE"), 99.6 * perCent);
+      CsI_Tl->AddMaterial(nist->FindOrBuildMaterial("G4_Tl"), 0.4 * perCent);
    }
   G4cout << "completed" << G4endl;
   return true;

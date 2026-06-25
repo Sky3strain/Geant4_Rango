@@ -90,6 +90,7 @@ using namespace Rango;
 
   // Process macro or start UI session
   //
+  UImanager->ApplyCommand("/control/macroPath /home/skyes/Geant4_MSFC/Geant4_Rango/macros");
   if (!ui) {
     // batch mode
     G4String command = "/control/execute ";

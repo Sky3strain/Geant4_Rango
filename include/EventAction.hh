@@ -39,6 +39,9 @@
 
 //Create classes
 class G4Event;
+//ROOT Stuff
+class TFile;
+class TTree;
 
 namespace Rango
 {
@@ -63,7 +66,6 @@ class EventAction : public G4UserEventAction
 
     void GetEnergy(G4int particleEnergy) {fParticleEnergy = particleEnergy;}
     G4int GetParticleEnergy() {return fParticleEnergy;}
-
     
   private:
     RunAction* fRunAction = nullptr; //Pointer for run action
