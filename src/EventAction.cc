@@ -34,6 +34,7 @@
 #include "EventAction.hh"
 #include "RunAction.hh"
 #include "PrimaryGeneratorAction.hh"
+#include "DetectorConstruction.hh"
 
 //Packages
 #include "G4SystemOfUnits.hh"
@@ -84,8 +85,13 @@ void EventAction::EndOfEventAction(const G4Event* event)
   const G4GeneralParticleSource* particleGun = generatorAction->GetParticleGun();
   G4double particleEnergy = particleGun->GetParticleEnergy();
 
-  G4cout<<"PRINTING: "<< fEdep /keV<<G4endl;
-  G4cout<<"PRINTING: "<< particleEnergy /keV<<G4endl;
+  const auto detConstruction = static_cast<const DetectorConstruction*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
+  const G4Tubs* detector = detConstruction->GetDet();
+  G4double detThick = 2.0*detector->GetZHalfLength();
+
+  G4cout<<"Energy Dep: "<< fEdep /keV<<G4endl;
+  G4cout<<"Particle Energy: "<< particleEnergy /keV<<G4endl;
+  G4cout<<"Det Thickness: "<< detThick/ cm <<G4endl;
   fRunAction->SetEnergy(particleEnergy / keV);
   fRunAction->SetEdep(fEdep / keV);
 
@@ -105,7 +111,10 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   TTree* transTree = fRunAction->GetTransTree();
   transTree->Fill();
-  
+
+  fRunAction->SetThickness(detThick/ cm);
+  TTree* thickTree = fRunAction->GetThickTree();
+  thickTree->Fill();
 }
 
 }

@@ -64,8 +64,12 @@ class EventAction : public G4UserEventAction
     void DetCount(G4int detCounter) {fDetCounter = detCounter;}
     G4int GetDetectorCount() {return fDetCounter;}
 
-    void GetEnergy(G4int particleEnergy) {fParticleEnergy = particleEnergy;}
-    G4int GetParticleEnergy() {return fParticleEnergy;}
+    // void GetEnergy(G4int particleEnergy) {fParticleEnergy = particleEnergy;}
+    // G4int GetParticleEnergy() {return fParticleEnergy;}
+
+    // void GetThick(G4double thickness){fDetThick = thickness;}
+    // G4double GetDetThick() {return fDetThick;}
+ 
     
   private:
     RunAction* fRunAction = nullptr; //Pointer for run action
@@ -74,6 +78,7 @@ class EventAction : public G4UserEventAction
     G4int fBeCounter = 0.;
     G4int fDetCounter = 0.;
     G4double fParticleEnergy = 0.;
+    G4double fDetThick = 0.;
 };
 }
 //Always include

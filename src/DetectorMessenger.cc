@@ -54,6 +54,11 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction* det) : fDetectorConst
   fDetMatCmd->SetParameterName("choice", false); //Parameter name is choice, false means the user must do this to use command
   fDetMatCmd->AvailableForStates(G4State_PreInit, G4State_Idle); //Can be used before the initialization or when simulation is idle
 
+  fDetThickCmd = new G4UIcmdWithADoubleAndUnit("/Detector/det/setDetThickness", this); //Create the directory to set thickness
+  fDetThickCmd->SetGuidance("Select Thickness of the Detector."); //Description of command
+  fDetThickCmd->SetParameterName("choice", false); //Parameter name is choice, false means the user must do this to use command
+  fDetThickCmd->AvailableForStates(G4State_PreInit, G4State_Idle); //Can be used before the initialization or when simulation is idle
+
   fWinMatCmd = new G4UIcmdWithAString("/Window/setWinMaterial", this); //Create the directory to set material
   fWinMatCmd->SetGuidance("Select Material of the Window."); //Description of command
   fWinMatCmd->SetParameterName("choice", false); //Parameter name is choice, false means the user must do this to use command
@@ -86,6 +91,7 @@ DetectorMessenger::~DetectorMessenger()
   delete fColourCmd;
   delete fWorldMatCmd;
   delete fWinMatCmd;
+  delete fDetThickCmd;
 }
   
 void DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
@@ -96,6 +102,10 @@ void DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
 
   if (command == fDetMatCmd) {
     fDetectorConstruction->SetDetMaterial(newValue); //Set new detector material value if commmand is used
+  }
+
+  if (command == fDetThickCmd){
+    fDetectorConstruction->SetDetectorThickness(fStepMaxCmd->GetNewDoubleValue(newValue)); //Set new detector thickness if command is used
   }
 
   if (command == fWorldMatCmd){

@@ -40,7 +40,7 @@ void CTransmission_root(){
     hTrans->Divide(hTotal);
     hTrans->Draw("HIST L");
 
-    std::ofstream TransmissionFile("Transmission_1-10000keV_Tef0.1MM.txt");
+    std::ofstream TransmissionFile("Transmission_1-10000keV_Tef0.2MM.txt");
     for(int i=1; i<=hTrans->GetNbinsX(); ++i) {
         for(int j=1; j<=hTrans->GetNbinsY(); ++j) {
             if(hTrans->GetBinContent(i,j) > 0){

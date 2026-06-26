@@ -67,6 +67,7 @@ class DetectorMessenger : public G4UImessenger
     G4UIcmdWithAString* fWinMatCmd = nullptr; //Command to change window material
     G4UIcmdWithAString* fWorldMatCmd = nullptr; //Command to change world material
     G4UIcmdWithADoubleAndUnit* fStepMaxCmd = nullptr; //Command to change maximum step
+    G4UIcmdWithADoubleAndUnit* fDetThickCmd = nullptr; //Command to change Detector Thickness
     G4UIcmdWithAString* fColourCmd = nullptr; //Command to change the color of the detector
 };
 }

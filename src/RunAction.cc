@@ -77,6 +77,10 @@ RunAction::RunAction()
   transTree = new TTree("transTree", "Transmission");
   transTree->Branch("Energy", &fEnergy, "Energy/D");
   transTree->Branch("Counter", &fCounter, "Counter/I");
+
+  thickTree = new TTree("thickTree", "Transmission");
+  thickTree->Branch("Thickness", &fThick, "Thickness/D");
+  thickTree->Branch("Edep", &Edep, "Edep/D");
 }
 
 RunAction::~RunAction(){
@@ -90,6 +94,10 @@ RunAction::~RunAction(){
   edepTree->Write();
   fRootFileEdep->Close();
 
+  G4String fileNameThick = "thicknessAeff.root";
+  fRootFileThick = new TFile(fileNameThick, "RECREATE");
+  thickTree->Write();
+  fRootFileThick->Close();
 }
 
   

@@ -63,9 +63,11 @@ class RunAction : public G4UserRunAction
 
     TTree* GetTransTree() {return transTree;}
     TTree* GetEdepTree() {return edepTree;}
+    TTree* GetThickTree() {return thickTree;}
     void SetEnergy(G4double val) {fEnergy = val;}
     void SetCounter(G4int val) {fCounter = val;}
     void SetEdep(G4double val) {Edep = val;}
+    void SetThickness(G4double val) {fThick = val;}
 
   private:
     G4Accumulable<G4double> fEdep = 0.;
@@ -74,11 +76,14 @@ class RunAction : public G4UserRunAction
     //ROOT Stuff
     TFile* fRootFileTrans = nullptr;
     TFile* fRootFileEdep = nullptr;
+    TFile* fRootFileThick = nullptr;
     G4double fEnergy;
     G4int fCounter;
     G4double Edep;
+    G4double fThick;
     TTree* transTree = nullptr;
     TTree* edepTree = nullptr;
+    TTree* thickTree = nullptr;
 };
 }
 #endif

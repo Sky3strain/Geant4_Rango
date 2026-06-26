@@ -33,6 +33,7 @@
 #include "DetectorConstruction.hh"
 #include "MaterialsList.hh"
 #include "QBBC.hh"
+#include "EventAction.hh"
 
 #include "G4RunManagerFactory.hh"
 #include "G4SteppingVerbose.hh"

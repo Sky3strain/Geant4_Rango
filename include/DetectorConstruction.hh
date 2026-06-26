@@ -38,6 +38,8 @@
 #include "globals.hh"
 #include "MaterialsList.hh"
 #include "ColourList.hh"
+#include "EventAction.hh"
+#include "G4Tubs.hh"
 
 //Define classes used to make functions
 class G4VPhysicalVolume;
@@ -47,11 +49,15 @@ class G4UserLimits;
 class G4GlobalMagFieldMessenger;
 class G4VisAttributes;
 class ColourList;
+class G4Tubs;
+class G4PVPlacement;
 
 namespace Rango
 {
+
 class DetectorMessenger;//So DetectorContruction can talk to DetectorMessanger
 /// Detector construction class to define materials and geometry.
+class EventAction;
 class DetectorConstruction : public G4VUserDetectorConstruction
 {
   public:
@@ -69,9 +75,11 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     void SetDetColour(G4String); //Set detector color
     void SetCheckOverlaps(G4bool); //Check for volumes overlaps
     void SetWorldMaterial(G4String); //Set world material
+    void SetDetectorThickness(G4double); //Set the Detector thickness
 
     //retrieve the pointer to the logical volume where you want simulation results
     G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
+    G4Tubs* GetDet() const {return detector;}
 
   private:
     //Function to define materials
@@ -81,6 +89,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     void GetColours();
 
     //Placement of logical volume in detector geometry
+
     G4VPhysicalVolume* DefineVolumes();
 
     G4LogicalVolume* detLogic = nullptr;  // Pointer to the logical Detector
@@ -109,6 +118,10 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
     G4LogicalVolume* fScoringVolume = nullptr; //Pointer to the logical volume of detector
 
+    G4Tubs* detector = nullptr;
+
+    G4PVPlacement* physWorld = nullptr;
+
     //Parameters for detector geometry
     G4double innerRadius;
     G4double outerRadius;
@@ -117,6 +130,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     G4double detPhimax;
     G4double beWinHz;
     G4double offset;
+    G4double detHzReal;
 };
 }
 //Always include!!
