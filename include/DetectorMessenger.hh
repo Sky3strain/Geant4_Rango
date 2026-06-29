@@ -40,6 +40,7 @@ class G4UIdirectory;
 class G4UIcmdWithAString;
 class G4UIcmdWithADoubleAndUnit;
 class G4UIcommand;
+class G4UIcmdWith3VectorAndUnit;
 
 /// Messenger class that defines commands for DetectorConstruction.
 ///
@@ -69,6 +70,7 @@ class DetectorMessenger : public G4UImessenger
     G4UIcmdWithADoubleAndUnit* fStepMaxCmd = nullptr; //Command to change maximum step
     G4UIcmdWithADoubleAndUnit* fDetThickCmd = nullptr; //Command to change Detector Thickness
     G4UIcmdWithAString* fColourCmd = nullptr; //Command to change the color of the detector
+    G4UIcmdWith3VectorAndUnit* fDetPosCmd = nullptr; //Command to change position of the detector
 };
 }
 //Always Include!!

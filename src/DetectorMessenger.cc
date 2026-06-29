@@ -38,6 +38,7 @@
 #include "G4UIcmdWithADoubleAndUnit.hh"
 #include "G4UIcmdWithAString.hh"
 #include "G4UIdirectory.hh"
+#include "G4UIcmdWith3VectorAndUnit.hh"
 
 namespace Rango
 {
@@ -58,6 +59,10 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction* det) : fDetectorConst
   fDetThickCmd->SetGuidance("Select Thickness of the Detector."); //Description of command
   fDetThickCmd->SetParameterName("choice", false); //Parameter name is choice, false means the user must do this to use command
   fDetThickCmd->AvailableForStates(G4State_PreInit, G4State_Idle); //Can be used before the initialization or when simulation is idle
+
+  fDetPosCmd = new G4UIcmdWith3VectorAndUnit("/Detector/det/setDetPosition", this); //Create the directory to set position
+  fDetPosCmd->SetGuidance("Select Position of the Detector."); //Description of command
+  fDetPosCmd->AvailableForStates(G4State_Idle); //Can be used before the initialization or when simulation is idle
 
   fWinMatCmd = new G4UIcmdWithAString("/Window/setWinMaterial", this); //Create the directory to set material
   fWinMatCmd->SetGuidance("Select Material of the Window."); //Description of command
@@ -92,6 +97,7 @@ DetectorMessenger::~DetectorMessenger()
   delete fWorldMatCmd;
   delete fWinMatCmd;
   delete fDetThickCmd;
+  delete fDetPosCmd;
 }
   
 void DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
@@ -118,6 +124,10 @@ void DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
 
   if (command == fColourCmd){
     fDetectorConstruction->SetDetColour(newValue); //Set new Colour for detector if command is used
+  }
+
+  if (command == fDetPosCmd){
+    fDetectorConstruction->SetDetectorPosition(fDetPosCmd->GetNew3VectorValue(newValue)); //Set new poisition for detector if command is used
   }
 }
 }

@@ -76,6 +76,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     void SetCheckOverlaps(G4bool); //Check for volumes overlaps
     void SetWorldMaterial(G4String); //Set world material
     void SetDetectorThickness(G4double); //Set the Detector thickness
+    void SetDetectorPosition(G4ThreeVector); //Set detector position
 
     //retrieve the pointer to the logical volume where you want simulation results
     G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
@@ -122,6 +123,10 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
     G4PVPlacement* physWorld = nullptr;
 
+    G4PVPlacement* beWinPv = nullptr;
+
+    G4PVPlacement* detPv = nullptr;
+
     //Parameters for detector geometry
     G4double innerRadius;
     G4double outerRadius;
@@ -131,6 +136,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     G4double beWinHz;
     G4double offset;
     G4double detHzReal;
+    G4double posOffset;
 };
 }
 //Always include!!

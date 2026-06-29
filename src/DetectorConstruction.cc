@@ -152,9 +152,10 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   //Detector Colour
   detLogic->SetVisAttributes(ColourList::GetInstance()->GetColour("grey"));
 
+  G4ThreeVector detTrans (0., 0., 0.);
   //Detector placement
-  new G4PVPlacement(nullptr,  // no rotation
-                    G4ThreeVector(),  // at position
+  detPv = new G4PVPlacement(nullptr,  // no rotation
+                    detTrans,  // at position
                     detLogic,  // its logical volume
                     "Detector",  // its name
                     logicWorld,  // its mother  volume
@@ -172,39 +173,39 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   //Beryllium Window
   //
   
-  // //Thickness of beryllium window
-  // beWinHz = 0.2*mm;
+  //Thickness of beryllium window
+  beWinHz = 0.02*cm;
 
-  // //Window material
-  // winMaterial = G4Material::GetMaterial("Teflon");
+  //Window material
+  winMaterial = G4Material::GetMaterial("Teflon");
 
-  // //offset of beryllium window
-  // offset = -1*((beWinHz/2)+(detHz/2));
+  //offset of beryllium window
+  offset = -1*((beWinHz/2)+(detHz/2));
 
-  // //Make the window a cylinder
-  // auto beWin = new G4Tubs("Beryllium Window", //its name
-  //                               innerRadius, outerRadius,
-  //                               beWinHz*0.5, detPhimin, detPhimax);//its size
+  //Make the window a cylinder
+  auto beWin = new G4Tubs("Beryllium Window", //its name
+                                innerRadius, outerRadius,
+                                beWinHz*0.5, detPhimin, detPhimax);//its size
   
-  // //Window logical volume
-  // beWinLogic = new G4LogicalVolume(beWin,  // its solid
-  //                                        winMaterial,  // its material
-  //                                        "Beryllium Window");  // its name
+  //Window logical volume
+  beWinLogic = new G4LogicalVolume(beWin,  // its solid
+                                         winMaterial,  // its material
+                                         "Beryllium Window");  // its name
   
  
-  // //Window placement
-  // new G4PVPlacement(nullptr,  // no rotation
-  //                   G4ThreeVector(0.0, 0.0, offset), // at position
-  //                   beWinLogic,  // its logical volume
-  //                   "Beryllium Window",  // its name
-  //                   logicWorld,  // its mother  volume
-  //                   false,  // no boolean operation
-  //                   0,  // copy number
-  //                   fCheckOverlaps);  // overlaps checking
- 
-  // G4VisAttributes* beWinColor= new G4VisAttributes(G4Colour(0.6, 0.2, 0.0, 0.8)); //Create the color, transparency is 50%
-  // beWinColor->SetVisibility(true); //Set the visibility
-  // beWinLogic->SetVisAttributes(beWinColor); //Give the window the color
+  //Window placement
+  beWinPv = new G4PVPlacement(nullptr,  // no rotation
+                    G4ThreeVector(0.0, 0.0, offset), // at position
+                    beWinLogic,  // its logical volume
+                    "Beryllium Window",  // its name
+                    logicWorld,  // its mother  volume
+                    false,  // no boolean operation
+                    0,  // copy number
+                    fCheckOverlaps);  // overlaps checking
+  
+  G4VisAttributes* beWinColor= new G4VisAttributes(G4Colour(0.6, 0.2, 0.0, 0.8)); //Create the color, transparency is 50%
+  beWinColor->SetVisibility(true); //Set the visibility
+  beWinLogic->SetVisAttributes(beWinColor); //Give the window the color
 
   //always return the physical World
   return physWorld;
@@ -298,9 +299,25 @@ void DetectorConstruction::SetDetColour(G4String colour)
 }
 
 void DetectorConstruction::SetDetectorThickness(G4double thickness){
-  printf("Setting target thickness to %.2f mm\n", thickness / mm);
+  printf("Setting target thickness to %.2f cm\n", thickness / cm);
   G4double targetThickness = thickness;
+  double offsetNew = (-1*((beWinHz/2)+(targetThickness/2)));
   detector->SetZHalfLength(0.5*targetThickness);
+  G4ThreeVector detPos = detPv->GetTranslation();
+  G4cout<<detPos<<G4endl;
+  G4ThreeVector winPos = G4ThreeVector(0.0, 0.0, offsetNew);
+  beWinPv->SetTranslation(winPos+detPos);
+  G4cout<<winPos+detPos<<G4endl;
+  G4RunManager::GetRunManager()->DefineWorldVolume(physWorld);
+  G4RunManager::GetRunManager()->GeometryDirectlyUpdated();
+}
+
+void DetectorConstruction::SetDetectorPosition(G4ThreeVector detPos){
+  G4double dehzUpdate = detector->GetZHalfLength();
+  posOffset = -1*((beWinHz/2)+(dehzUpdate));
+  G4ThreeVector winPos = G4ThreeVector(0.0, 0.0, posOffset);
+  detPv->SetTranslation(G4ThreeVector(detPos));
+  beWinPv->SetTranslation(G4ThreeVector(detPos+winPos));
   G4RunManager::GetRunManager()->DefineWorldVolume(physWorld);
   G4RunManager::GetRunManager()->GeometryDirectlyUpdated();
 }
