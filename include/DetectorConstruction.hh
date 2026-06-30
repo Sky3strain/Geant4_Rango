@@ -77,6 +77,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     void SetWorldMaterial(G4String); //Set world material
     void SetDetectorThickness(G4double); //Set the Detector thickness
     void SetDetectorPosition(G4ThreeVector); //Set detector position
+    void SetWindowThickness(G4double); //Set window thickness
 
     //retrieve the pointer to the logical volume where you want simulation results
     G4LogicalVolume* GetScoringVolume() const { return fScoringVolume; }
@@ -120,6 +121,8 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     G4LogicalVolume* fScoringVolume = nullptr; //Pointer to the logical volume of detector
 
     G4Tubs* detector = nullptr;
+
+    G4Tubs* beWin = nullptr;
 
     G4PVPlacement* physWorld = nullptr;
 

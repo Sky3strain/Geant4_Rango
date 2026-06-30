@@ -69,6 +69,11 @@ DetectorMessenger::DetectorMessenger(DetectorConstruction* det) : fDetectorConst
   fWinMatCmd->SetParameterName("choice", false); //Parameter name is choice, false means the user must do this to use command
   fWinMatCmd->AvailableForStates(G4State_PreInit, G4State_Idle); //Can be used before the initialization or when simulation is idle
 
+  fWinThickCmd = new G4UIcmdWithADoubleAndUnit("/Window/setWinThickness", this); //Create the directory to set thickness
+  fWinThickCmd->SetGuidance("Select Thickness of the window."); //Description of command
+  fWinThickCmd->SetParameterName("choice", false); //Parameter name is choice, false means the user must do this to use command
+  fWinThickCmd->AvailableForStates(G4State_PreInit, G4State_Idle); //Can be used before the initialization or when simulation is idle
+
   fWorldMatCmd = new G4UIcmdWithAString("/World/SetWorldMaterial", this); //Create the directory to set material
   fWorldMatCmd->SetGuidance("Select Material of the World."); //Description of command
   fWorldMatCmd->SetParameterName("choice", false); //Parameter name is choice, false means the user must do this to use command
@@ -98,6 +103,7 @@ DetectorMessenger::~DetectorMessenger()
   delete fWinMatCmd;
   delete fDetThickCmd;
   delete fDetPosCmd;
+  delete fWinThickCmd;
 }
   
 void DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
@@ -111,7 +117,7 @@ void DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
   }
 
   if (command == fDetThickCmd){
-    fDetectorConstruction->SetDetectorThickness(fStepMaxCmd->GetNewDoubleValue(newValue)); //Set new detector thickness if command is used
+    fDetectorConstruction->SetDetectorThickness(fDetThickCmd->GetNewDoubleValue(newValue)); //Set new detector thickness if command is used
   }
 
   if (command == fWorldMatCmd){
@@ -128,6 +134,10 @@ void DetectorMessenger::SetNewValue(G4UIcommand* command, G4String newValue)
 
   if (command == fDetPosCmd){
     fDetectorConstruction->SetDetectorPosition(fDetPosCmd->GetNew3VectorValue(newValue)); //Set new poisition for detector if command is used
+  }
+
+  if (command == fWinThickCmd){
+    fDetectorConstruction->SetWindowThickness(fWinThickCmd->GetNewDoubleValue(newValue)); //Set new thickness for window if command is used
   }
 }
 }

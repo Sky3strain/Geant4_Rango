@@ -71,6 +71,7 @@ class DetectorMessenger : public G4UImessenger
     G4UIcmdWithADoubleAndUnit* fDetThickCmd = nullptr; //Command to change Detector Thickness
     G4UIcmdWithAString* fColourCmd = nullptr; //Command to change the color of the detector
     G4UIcmdWith3VectorAndUnit* fDetPosCmd = nullptr; //Command to change position of the detector
+    G4UIcmdWithADoubleAndUnit* fWinThickCmd = nullptr; //Command to change window Thickness
 };
 }
 //Always Include!!

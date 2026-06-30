@@ -183,7 +183,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   offset = -1*((beWinHz/2)+(detHz/2));
 
   //Make the window a cylinder
-  auto beWin = new G4Tubs("Beryllium Window", //its name
+  beWin = new G4Tubs("Beryllium Window", //its name
                                 innerRadius, outerRadius,
                                 beWinHz*0.5, detPhimin, detPhimax);//its size
   
@@ -299,12 +299,24 @@ void DetectorConstruction::SetDetColour(G4String colour)
 }
 
 void DetectorConstruction::SetDetectorThickness(G4double thickness){
-  printf("Setting target thickness to %.2f cm\n", thickness / cm);
   G4double targetThickness = thickness;
-  double offsetNew = (-1*((beWinHz/2)+(targetThickness/2)));
+  G4double behzUpdate = beWin->GetZHalfLength();
+  double offsetNew = (-1*((behzUpdate)+(targetThickness/2)));
   detector->SetZHalfLength(0.5*targetThickness);
   G4ThreeVector detPos = detPv->GetTranslation();
-  G4cout<<detPos<<G4endl;
+  G4ThreeVector winPos = G4ThreeVector(0.0, 0.0, offsetNew);
+  beWinPv->SetTranslation(winPos+detPos);
+  G4RunManager::GetRunManager()->DefineWorldVolume(physWorld);
+  G4RunManager::GetRunManager()->GeometryDirectlyUpdated();
+}
+
+void DetectorConstruction::SetWindowThickness(G4double thickness){
+  G4double targetThickness = thickness;
+  beWin->SetZHalfLength(0.5*targetThickness);
+  G4double detHz = detector->GetZHalfLength();
+  G4ThreeVector detPos = detPv->GetTranslation();
+  double offsetNew = (-1*((detHz)+(targetThickness/2)));
+  G4cout<<offsetNew<<G4endl;
   G4ThreeVector winPos = G4ThreeVector(0.0, 0.0, offsetNew);
   beWinPv->SetTranslation(winPos+detPos);
   G4cout<<winPos+detPos<<G4endl;
@@ -314,7 +326,8 @@ void DetectorConstruction::SetDetectorThickness(G4double thickness){
 
 void DetectorConstruction::SetDetectorPosition(G4ThreeVector detPos){
   G4double dehzUpdate = detector->GetZHalfLength();
-  posOffset = -1*((beWinHz/2)+(dehzUpdate));
+  G4double behzUpdate = beWin->GetZHalfLength();
+  posOffset = -1*((behzUpdate)+(dehzUpdate));
   G4ThreeVector winPos = G4ThreeVector(0.0, 0.0, posOffset);
   detPv->SetTranslation(G4ThreeVector(detPos));
   beWinPv->SetTranslation(G4ThreeVector(detPos+winPos));
