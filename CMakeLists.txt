@@ -43,7 +43,6 @@ target_link_libraries(Rango
 #
 set(EXAMPLEB1_SCRIPTS
   exampleB1.out
-  Test.mac
   vis.mac
   init_vis.mac
   exampleB1.in

@@ -17,7 +17,7 @@ MaterialsList* MaterialsList::GetInstance()
 //MaterialsList constrcutor
 MaterialsList::MaterialsList() 
 //Define the materials
-: NaI(0), CsI(0), Air(0), Vaccum(0), Be(0), Mg(0), Al(0), Teflon(0), CdTe(0), CsI_Na(0), CsI_Tl(0), CeBr3(0), NaI_Tl(0)
+: NaI(0), CsI(0), Air(0), Vaccum(0), Be(0), Mg(0), Al(0), Teflon(0), CdTe(0), CsI_Na(0), CsI_Tl(0), CeBr3(0), NaI_Tl(0), BGO(0)
 {
   if( instance == 0 ){
       instance = this; // give the constructor a pointer to itself
@@ -41,6 +41,7 @@ MaterialsList::MaterialsList()
    DefineMaterial("CsI_Tl");
    DefineMaterial("CeBr3");
    DefineMaterial("NaI_Tl");
+   DefineMaterial("BGO");
 }
 
 //Destructor
@@ -61,7 +62,7 @@ MaterialsList::~MaterialsList()
   delete CsI_Tl;
   delete CeBr3;
   delete NaI_Tl;
-
+  delete BGO;
 }
 
 //See if the material exists
@@ -145,6 +146,10 @@ G4bool MaterialsList::DefineMaterial( G4String sMaterialNameIn )
       CsI_Tl = new G4Material("CsI_Tl", density=4.51 * g / cm3, numberOfComponents=2);
       CsI_Tl->AddMaterial(nist->FindOrBuildMaterial("G4_CESIUM_IODIDE"), 99.6 * perCent);
       CsI_Tl->AddMaterial(nist->FindOrBuildMaterial("G4_Tl"), 0.4 * perCent);
+   }
+   else if (sMaterialNameIn == "BGO") {
+      BGO = nist->FindOrBuildMaterial("G4_BGO");
+      BGO->SetName(sMaterialNameIn);
    }
   G4cout << "completed" << G4endl;
   return true;

@@ -1,3 +1,4 @@
+//Structure from Josh Woods code for the Phoswich
 //Header file to define materials.
 #ifndef MaterialsList_h
 #define MaterialsList_h 1
@@ -40,6 +41,7 @@ class MaterialsList
         G4Material* CsI_Tl;          // Cesium Iodide scintillator (doped w/thallium)
         G4Material* CeBr3;           // Cerium Bromide
         G4Material* NaI_Tl;          // Sodium Iodide scintillator (doped w/thallium)
+        G4Material* BGO; //Define BGO
 
         //To define Materials
         G4int numberOfComponents;  // number of atoms of each element

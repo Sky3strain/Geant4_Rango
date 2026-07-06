@@ -54,36 +54,39 @@ class RunAction : public G4UserRunAction
 {
   public:
     RunAction();
-    ~RunAction() override;
+    ~RunAction();
 
-    void BeginOfRunAction(const G4Run*) override;
-    void EndOfRunAction(const G4Run*) override;
+    void BeginOfRunAction(const G4Run*) override; //Begin of run
+    void EndOfRunAction(const G4Run*) override; //End of run
 
-    void AddEdep(G4double edep);
+    void AddEdep(G4double edep); //To calculate energy deposited
 
-    TTree* GetTransTree() {return transTree;}
-    TTree* GetEdepTree() {return edepTree;}
-    TTree* GetThickTree() {return thickTree;}
-    void SetEnergy(G4double val) {fEnergy = val;}
-    void SetCounter(G4int val) {fCounter = val;}
-    void SetEdep(G4double val) {Edep = val;}
-    void SetThickness(G4double val) {fThick = val;}
+    TTree* GetTransTree() {return transTree;} //Return the tree containing transmission data
+    TTree* GetEdepTree() {return edepTree;} //Return the tree containing energy deposition data
+    TTree* GetThickTree() {return thickTree;} //Return the tree containing thickness data
+    void SetEnergy(G4double val) {fEnergy = val;} //Function to set energy
+    void SetCounter(G4int val) {fCounter = val;} //Function to set transmission counter
+    void SetEdep(G4double val) {Edep = val;} //Function to set energy deposited
+    void SetThickness(G4double val) {fThick = val;} //Function to set thickness
 
   private:
-    G4Accumulable<G4double> fEdep = 0.;
+    //Energy deposition variables
+    G4Accumulable<G4double> fEdep = 0.; 
     G4Accumulable<G4double> fEdep2 = 0.;
 
     //ROOT Stuff
-    TFile* fRootFileTrans = nullptr;
-    TFile* fRootFileEdep = nullptr;
-    TFile* fRootFileThick = nullptr;
-    G4double fEnergy;
+    TFile* fRootFileTrans = nullptr; //Transmission file
+    TFile* fRootFileEdep = nullptr; //Energy deposition file
+    TFile* fRootFileThick = nullptr; //Thickness file
+    TTree* transTree = nullptr; //Transmission tree
+    TTree* edepTree = nullptr; //Energy deposition tree
+    TTree* thickTree = nullptr; //Thickness tree 
+
+    //Create variables
+    G4double fEnergy; 
     G4int fCounter;
     G4double Edep;
     G4double fThick;
-    TTree* transTree = nullptr;
-    TTree* edepTree = nullptr;
-    TTree* thickTree = nullptr;
 };
 }
 #endif

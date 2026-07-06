@@ -1,4 +1,4 @@
-#Simple Test Particle
+#Simple test particle for effective area
 /run/initialize
 /gps/position 0.0 0.0 -20.0 cm
 /gps/direction 0 0 1

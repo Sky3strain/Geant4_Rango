@@ -1,4 +1,4 @@
-#Simple Test Particle
+#Macro to study transmission for up to 30 keV
 /run/initialize
 /gps/position 0.0 0.0 -20.0 cm
 /gps/direction 0 0 1

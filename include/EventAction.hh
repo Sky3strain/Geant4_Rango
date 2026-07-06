@@ -63,22 +63,16 @@ class EventAction : public G4UserEventAction
 
     void DetCount(G4int detCounter) {fDetCounter = detCounter;}
     G4int GetDetectorCount() {return fDetCounter;}
-
-    // void GetEnergy(G4int particleEnergy) {fParticleEnergy = particleEnergy;}
-    // G4int GetParticleEnergy() {return fParticleEnergy;}
-
-    // void GetThick(G4double thickness){fDetThick = thickness;}
-    // G4double GetDetThick() {return fDetThick;}
  
     
   private:
     RunAction* fRunAction = nullptr; //Pointer for run action
     G4double fEdep = 0.; //Energy deposition variable 
     G4Event* event = nullptr; //Event variable
-    G4int fBeCounter = 0.;
-    G4int fDetCounter = 0.;
-    G4double fParticleEnergy = 0.;
-    G4double fDetThick = 0.;
+    G4int fBeCounter = 0.; //Pointer for transmission count through window
+    G4int fDetCounter = 0.; //Pointer for transmission count through detector
+    G4double fParticleEnergy = 0.; //Pointer for particle energy
+    G4double fDetThick = 0.; //Pointer for detector thickness
 };
 }
 //Always include

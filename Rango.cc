@@ -40,7 +40,6 @@
 #include "G4UIExecutive.hh"
 #include "G4UImanager.hh"
 #include "G4VisExecutive.hh"
-// #include "Randomize.hh"
 
 using namespace Rango;
 
@@ -91,6 +90,7 @@ using namespace Rango;
 
   // Process macro or start UI session
   //
+  //Set macros path
   UImanager->ApplyCommand("/control/macroPath /home/skyes/Geant4_MSFC/Geant4_Rango/macros");
   if (!ui) {
     // batch mode

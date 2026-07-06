@@ -130,14 +130,13 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   // Define size of detector
   innerRadius = 0 *cm;
   outerRadius = 6.35 *cm;
-  // detHz = 1.5 * cm;
-  detHz = 0.5 * cm;
+  detHz = 1.5 * cm;
   detHzReal = detHz *0.5;
   detPhimin = 0. * deg;
   detPhimax = 360. * deg;
 
   // //Define detector material
-  detMaterial = G4Material::GetMaterial("NaI");
+  detMaterial = G4Material::GetMaterial("NaI_Tl");
 
   //Make the Detector a cylinder
   detector = new G4Tubs("Detector", //its name
@@ -174,10 +173,10 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   //
   
   //Thickness of beryllium window
-  beWinHz = 0.02*cm;
+  beWinHz = 0.2*cm;
 
   //Window material
-  winMaterial = G4Material::GetMaterial("Teflon");
+  winMaterial = G4Material::GetMaterial("Al");
 
   //offset of beryllium window
   offset = -1*((beWinHz/2)+(detHz/2));
@@ -299,6 +298,7 @@ void DetectorConstruction::SetDetColour(G4String colour)
 }
 
 void DetectorConstruction::SetDetectorThickness(G4double thickness){
+  //Function to set detector thickness
   G4double targetThickness = thickness;
   G4double behzUpdate = beWin->GetZHalfLength();
   double offsetNew = (-1*((behzUpdate)+(targetThickness/2)));
@@ -311,6 +311,7 @@ void DetectorConstruction::SetDetectorThickness(G4double thickness){
 }
 
 void DetectorConstruction::SetWindowThickness(G4double thickness){
+  //Function to set window thickness
   G4double targetThickness = thickness;
   beWin->SetZHalfLength(0.5*targetThickness);
   G4double detHz = detector->GetZHalfLength();
@@ -325,6 +326,7 @@ void DetectorConstruction::SetWindowThickness(G4double thickness){
 }
 
 void DetectorConstruction::SetDetectorPosition(G4ThreeVector detPos){
+  //Function to set detector position
   G4double dehzUpdate = detector->GetZHalfLength();
   G4double behzUpdate = beWin->GetZHalfLength();
   posOffset = -1*((behzUpdate)+(dehzUpdate));

@@ -42,11 +42,8 @@
 #include "G4RunManager.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4UnitsTable.hh"
-#include "G4AnalysisManager.hh"//For Root
-// #include "TTree.h" //For Root trees
-// #include "TFile.h" //For Root file
+#include "G4AnalysisManager.hh"
 #include <TFile.h>
-// #include <TH1D.h>
 #include <TTree.h>
 
 namespace Rango
@@ -60,6 +57,7 @@ RunAction::RunAction()
   const G4double nanogray = 1.e-9 * gray;
   const G4double picogray = 1.e-12 * gray;
 
+  //Create the units
   new G4UnitDefinition("milligray", "milliGy", "Dose", milligray);
   new G4UnitDefinition("microgray", "microGy", "Dose", microgray);
   new G4UnitDefinition("nanogray", "nanoGy", "Dose", nanogray);
@@ -70,30 +68,36 @@ RunAction::RunAction()
   accumulableManager->Register(fEdep);
   accumulableManager->Register(fEdep2);
 
+  //Energy deposition tree
   edepTree = new TTree("edepTree", "Edep");
   edepTree->Branch("Energy", &fEnergy, "Energy/D");
   edepTree->Branch("Edep", &Edep, "Edep/D");
-
+ 
+  //Transmission data tree
   transTree = new TTree("transTree", "Transmission");
   transTree->Branch("Energy", &fEnergy, "Energy/D");
   transTree->Branch("Counter", &fCounter, "Counter/I");
 
+  //Thickness data tree
   thickTree = new TTree("thickTree", "Transmission");
   thickTree->Branch("Thickness", &fThick, "Thickness/D");
   thickTree->Branch("Edep", &Edep, "Edep/D");
 }
 
 RunAction::~RunAction(){
-  G4String fileNameTrans = "transmissionBe1MM.root";
+  //Transmission data file
+  G4String fileNameTrans = "transmission.root";
   fRootFileTrans = new TFile(fileNameTrans, "RECREATE");
   transTree->Write();
   fRootFileTrans->Close();
 
+  //Energy deposition file
   G4String fileNameEdep = "energyDep.root";
   fRootFileEdep = new TFile(fileNameEdep, "RECREATE");
   edepTree->Write();
   fRootFileEdep->Close();
 
+  //Effective area with thickness file
   G4String fileNameThick = "thicknessAeff.root";
   fRootFileThick = new TFile(fileNameThick, "RECREATE");
   thickTree->Write();
@@ -122,7 +126,6 @@ void RunAction::EndOfRunAction(const G4Run* run)
   accumulableManager->Merge();
 
   // Compute dose = total energy deposit in a run and its variance
-  //
   G4double edep = fEdep.GetValue();
   G4double edep2 = fEdep2.GetValue();
 
@@ -144,6 +147,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
   const auto generatorAction = static_cast<const PrimaryGeneratorAction*>(
     G4RunManager::GetRunManager()->GetUserPrimaryGeneratorAction());
   G4String runCondition;
+
   if (generatorAction) {
     const G4GeneralParticleSource* particleGun = generatorAction->GetParticleGun();
     runCondition += particleGun->GetParticleDefinition()->GetParticleName();
@@ -169,7 +173,6 @@ void RunAction::EndOfRunAction(const G4Run* run)
   G4cout << G4endl << " The run is " << nofEvents << " " << runCondition << G4endl << G4endl;
   G4cout << "  --> cumulated edep per run in scoring volume = " << G4BestUnit(edep, "Energy") 
          << " = " << edep/joule << " joule" << G4endl;  
-  // G4cout << " --> total energy thrown = " << G4GeneralParticleSource->GetParticleEnergy()* keV << G4endl;
   G4cout << "  --> mass of scoring volume = " << G4BestUnit(mass, "Mass") << G4endl << G4endl; 
   G4cout << " Absorbed dose per run in scoring volume = edep/mass = " << G4BestUnit(dose, "Dose")
          << "; rms = " << G4BestUnit(rmsDose, "Dose") << G4endl;
@@ -178,6 +181,7 @@ void RunAction::EndOfRunAction(const G4Run* run)
   
 void RunAction::AddEdep(G4double edep)
 {
+  //Calculate energy deposited
   fEdep += edep;
   fEdep2 += edep * edep;
 }

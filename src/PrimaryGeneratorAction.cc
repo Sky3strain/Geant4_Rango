@@ -41,6 +41,7 @@ namespace Rango
 {
 PrimaryGeneratorAction::PrimaryGeneratorAction()
 {
+  //Create particle gun pointer
   fParticleGun = new G4GeneralParticleSource();
   
   // default particle kinematic
@@ -51,6 +52,7 @@ PrimaryGeneratorAction::PrimaryGeneratorAction()
   
 PrimaryGeneratorAction::~PrimaryGeneratorAction()
 {
+  //Delete pointer
   delete fParticleGun;
 }
   

@@ -44,19 +44,17 @@
   
 namespace Rango
 {
+//Link stepping action and event action through the constructor
 SteppingAction::SteppingAction(EventAction* eventAction) : fEventAction(eventAction) {}
   
 void SteppingAction::UserSteppingAction(const G4Step* step)
 {
+  //Set scoring volume
   if (!fScoringVolume) {
     const auto detConstruction = static_cast<const DetectorConstruction*>(
       G4RunManager::GetRunManager()->GetUserDetectorConstruction());
     fScoringVolume = detConstruction->GetScoringVolume();
   }
-
-  // get volume of the current step
-  // const G4LogicalVolume* volume =
-  //   step->GetPreStepPoint()->GetTouchableHandle()->GetVolume()->GetName();
 
   //Track the particle
   const G4String currentPhysicalName = step->GetPreStepPoint()->GetPhysicalVolume()->GetName();
@@ -70,8 +68,9 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
    else // particle left world volume, use track volume name
       volumeName = step->GetTrack()->GetVolume()->GetName();
 
+  //Flag if particle goes into the world
   if (volumeName == "World"){
-    G4cout<< "Uh oh that beam missed and is in the world! :("<<G4endl;
+    G4cout<< "Uh oh that beam is in the world! :("<<G4endl;
     return;
   }
   
@@ -110,27 +109,23 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
       // eventAction->nFace = 1;
     } 
   
+    //Counter for transmission through window
     G4int beCounter = 0.;
     if (G4StrUtil::contains(volumeName, "Beryllium Window"))
     {
       beCounter = 1;
     }
 
+    //Counter for transmission through detector
     G4int detCounter = 0.;
     if (G4StrUtil::contains(volumeName, "Detector"))
     {
       detCounter = 1;
       beCounter = 1;
     } 
+
+    //Give the counter information to event action
     fEventAction->DetCount(detCounter);
     fEventAction->BeCount(beCounter);   
-
-    
-    // if (!isPrimary && (particleName != "opticalphoton")) {
-    //   if ((processName == "eIoni")) {
-    //       if (G4StrUtil::contains(volumeName, "Detector"))
-    //           EventAction->fEdep += step->GetTotalEnergyDeposit() / keV;
-    //     }
-    //  }
 }
 }

@@ -62,7 +62,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 {
   public:
     DetectorConstruction(); //Constructor
-    ~DetectorConstruction() override; //Destructor
+    ~DetectorConstruction(); //Destructor
 
   public:
     //Mandatory to implement, define and return world physical volume
@@ -120,15 +120,15 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
     G4LogicalVolume* fScoringVolume = nullptr; //Pointer to the logical volume of detector
 
-    G4Tubs* detector = nullptr;
+    G4Tubs* detector = nullptr; //Shape of detector
 
-    G4Tubs* beWin = nullptr;
+    G4Tubs* beWin = nullptr; //Shape of window
 
-    G4PVPlacement* physWorld = nullptr;
+    G4PVPlacement* physWorld = nullptr; //Physical world volume
 
-    G4PVPlacement* beWinPv = nullptr;
+    G4PVPlacement* beWinPv = nullptr; //Physical volume for window
 
-    G4PVPlacement* detPv = nullptr;
+    G4PVPlacement* detPv = nullptr; //Physical volume for detector
 
     //Parameters for detector geometry
     G4double innerRadius;

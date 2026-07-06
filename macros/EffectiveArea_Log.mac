@@ -1,4 +1,4 @@
-#Simple Test Particle
+#Effective area macro with logarithmic energy
 /run/initialize
 /gps/position 0.0 0.0 -20.0 cm
 /gps/direction 0 0 1

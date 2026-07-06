@@ -57,7 +57,8 @@ static bool first = true;
 namespace Rango
 {
 //Create 
-EventAction::EventAction(RunAction* runAction) : fRunAction(runAction) {} //Allows EventAction to communicate with RunAction
+EventAction::EventAction(RunAction* runAction) : fRunAction(runAction) {} 
+//Allows EventAction to communicate with RunAction
 
 void EventAction::BeginOfEventAction(const G4Event* event)
 {
@@ -85,22 +86,19 @@ void EventAction::EndOfEventAction(const G4Event* event)
   const G4GeneralParticleSource* particleGun = generatorAction->GetParticleGun();
   G4double particleEnergy = particleGun->GetParticleEnergy();
 
+  //Get detector thickness
   const auto detConstruction = static_cast<const DetectorConstruction*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
   const G4Tubs* detector = detConstruction->GetDet();
   G4double detThick = 2.0*detector->GetZHalfLength();
 
-  G4cout<<"Energy Dep: "<< fEdep /keV<<G4endl;
-  G4cout<<"Particle Energy: "<< particleEnergy /keV<<G4endl;
-  G4cout<<"Det Thickness: "<< detThick/ cm <<G4endl;
+  //Set energy
   fRunAction->SetEnergy(particleEnergy / keV);
+  //Set energy deposition
   fRunAction->SetEdep(fEdep / keV);
 
+  //Fill energy deposition tree
   TTree* edepTree = fRunAction->GetEdepTree();
   edepTree->Fill();
-
-  G4cout << "\n" << G4endl;
-  // //AnalysisManager instance
-  // auto analysisManager = G4AnalysisManager::Instance();
   
   G4int transmissionCount = GetTransmissionCount();
   G4int detectorCount = GetDetectorCount();
@@ -109,9 +107,11 @@ void EventAction::EndOfEventAction(const G4Event* event)
   //Write to Root file
   fRunAction->SetCounter(totalCount);
 
+  //Fill transmission tree
   TTree* transTree = fRunAction->GetTransTree();
   transTree->Fill();
 
+  //Fill thickness tree
   fRunAction->SetThickness(detThick/ cm);
   TTree* thickTree = fRunAction->GetThickTree();
   thickTree->Fill();

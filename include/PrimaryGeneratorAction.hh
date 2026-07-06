@@ -45,7 +45,7 @@ class PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
   public:
     PrimaryGeneratorAction();
-    ~PrimaryGeneratorAction() override;
+    ~PrimaryGeneratorAction();
 
     // method to access particle gun
     void GeneratePrimaries(G4Event*);

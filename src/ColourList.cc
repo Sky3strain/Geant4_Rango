@@ -1,3 +1,4 @@
+//Created by Skye Strain
 //Code for colors of detector 
 //include header
 #include "ColourList.hh"
@@ -9,21 +10,23 @@
 
 namespace Rango
 {
-ColourList* ColourList::instance = nullptr;
+ColourList* ColourList::instance = nullptr; //Create instance
 
 ColourList* ColourList::GetInstance()
 {
-    if (!instance) instance = new ColourList();
+    //Get the instance if it doesnt exist
+    if (!instance) instance = new ColourList(); 
     return instance;
 }
 
 ColourList::ColourList()
 :red(0), orange(0), yellow(0), green(0), blue(0), purple(0), pink(0), 
-white(0), grey(0), invisibility(0) 
+white(0), grey(0), invisibility(0) //List all pointers
 {
     if(instance == 0){
         instance = this;
     }
+    //Define all colors
     DefineColour("red");
     DefineColour("orange");
     DefineColour("yellow");
@@ -38,6 +41,7 @@ white(0), grey(0), invisibility(0)
 
 ColourList::~ColourList()
 {
+    //Delete the pointers
     delete red;
     delete orange;
     delete yellow;
@@ -52,6 +56,7 @@ ColourList::~ColourList()
 
 G4bool ColourList::DefineColour(G4String sColorNameIn)
 {
+    //Set the colors
     G4cout<< "Defining "<< sColorNameIn << "....."<<G4endl;
     if(sColorNameIn == "red")
     {
@@ -109,6 +114,7 @@ G4bool ColourList::DefineColour(G4String sColorNameIn)
 
 G4VisAttributes* ColourList::GetColour(G4String colourName)
 {
+    //Make it that color
     if(colourName == "red"){
         return red;
     }

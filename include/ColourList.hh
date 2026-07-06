@@ -1,3 +1,4 @@
+//Created By Skye Strain
 //Create all Colours for the detector
 #ifndef ColourList_h
 #define ColourList_h 1
@@ -13,7 +14,7 @@ class ColourList
 {
     public:
         ColourList(); //Constructor
-        ~ColourList(); //Detsructor
+        ~ColourList(); //Destructor
         G4bool DefineColour(G4String sColourNumIn); //To define Colour
         G4VisAttributes* GetColour(G4String colourName); //To get the colour
         static ColourList* GetInstance(); // Returns pointer to the current colour list instance

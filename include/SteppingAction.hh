@@ -54,11 +54,11 @@ class SteppingAction : public G4UserSteppingAction
     void UserSteppingAction(const G4Step*) override;
 
   private:
-    EventAction* fEventAction = nullptr;
-    RunAction* fRunAction = nullptr;
-    G4LogicalVolume* fScoringVolume = nullptr;
-    G4String volumeName;
-    G4String nextVolume;
+    EventAction* fEventAction = nullptr; //Pointer to event action
+    RunAction* fRunAction = nullptr; //Pointer to run action
+    G4LogicalVolume* fScoringVolume = nullptr; //Pointer to scoring volume
+    G4String volumeName; //Variable for volume name
+    G4String nextVolume; //Variable containing the next volume
 };
 }
 #endif
