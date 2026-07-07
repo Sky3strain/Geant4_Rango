@@ -82,6 +82,9 @@ G4bool MaterialsList::MaterialExists( G4String sMaterialNameIn )
 //Define all materials
 G4bool MaterialsList::DefineMaterial( G4String sMaterialNameIn )
 {
+   const G4int nEntries = 2;
+   G4double PhotonEnergy[nEntries] = {0.1 * eV, 10.0 * eV};
+   
    //Define Sodium Iodide
    G4cout << "Defining " << sMaterialNameIn << " ... ";
    if( sMaterialNameIn == "NaI" ) {
@@ -136,6 +139,19 @@ G4bool MaterialsList::DefineMaterial( G4String sMaterialNameIn )
       NaI_Tl = new G4Material("NaI_Tl", density=3.67 * g / cm3, numberOfComponents=2);
       NaI_Tl->AddMaterial(nist->FindOrBuildMaterial("G4_SODIUM_IODIDE"), 99.5 * perCent);
       NaI_Tl->AddMaterial(nist->FindOrBuildMaterial("G4_Tl"), 0.5 * perCent);
+
+      G4MaterialPropertiesTable* NaI_Tl_MPT = new G4MaterialPropertiesTable();
+      G4double NaIRefractionIndex[nEntries] = {1.85, 1.85};
+      G4double NaIAbsorptionLength[nEntries] = {26 * cm, 26 * cm};
+      NaI_Tl_MPT->AddProperty("RINDEX", PhotonEnergy, NaIRefractionIndex, nEntries);
+      NaI_Tl_MPT->AddProperty("ABSLENGTH",PhotonEnergy, NaIAbsorptionLength, nEntries);
+      NaI_Tl_MPT->AddConstProperty("SCINTILLATIONYIELD", 38. / keV);
+      // NaI_Tl_MPT->AddConstProperty("RESOLUTIONSCALE", 1.);
+      // // NaI_Tl_MPT->AddConstProperty("SLOWTIMECONSTANT", 230. * ns);
+      // NaI_Tl_MPT->AddConstProperty("SCINTILLATIONTIMECONSTANT1", 230. * ns);
+      // // NaI_Tl_MPT->AddConstProperty("YIELDRATIO", 1.);
+      // NaI_Tl_MPT->AddConstProperty("SCINTILLATIONYIELD1", 1.);
+      NaI_Tl->SetMaterialPropertiesTable(NaI_Tl_MPT);
    }
    else if (sMaterialNameIn == "CsI_Na") {
       CsI_Na = new G4Material("CsI_Na", density=4.51 * g / cm3, numberOfComponents=2);

@@ -41,6 +41,9 @@
 #include "G4ParticleDefinition.hh"
 #include "G4SystemOfUnits.hh"
 #include "G4SteppingManager.hh"
+#include "G4OpticalPhoton.hh"
+#include "G4AnalysisManager.hh"
+#include "RunAction.hh"
   
 namespace Rango
 {

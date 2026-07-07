@@ -171,41 +171,43 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   //
   //Beryllium Window
   //
-  
-  //Thickness of beryllium window
-  beWinHz = 0.2*cm;
+  G4bool windowOn = false;
+  if(windowOn == true)
+  {
+    //Thickness of beryllium window
+    beWinHz = 0.2*cm;
 
-  //Window material
-  winMaterial = G4Material::GetMaterial("Al");
+    //Window material
+    winMaterial = G4Material::GetMaterial("Al");
 
-  //offset of beryllium window
-  offset = -1*((beWinHz/2)+(detHz/2));
+    //offset of beryllium window
+    offset = -1*((beWinHz/2)+(detHz/2));
 
-  //Make the window a cylinder
-  beWin = new G4Tubs("Beryllium Window", //its name
-                                innerRadius, outerRadius,
-                                beWinHz*0.5, detPhimin, detPhimax);//its size
+    //Make the window a cylinder
+    beWin = new G4Tubs("Beryllium Window", //its name
+                                  innerRadius, outerRadius,
+                                  beWinHz*0.5, detPhimin, detPhimax);//its size
+    
+    //Window logical volume
+    beWinLogic = new G4LogicalVolume(beWin,  // its solid
+                                          winMaterial,  // its material
+                                          "Beryllium Window");  // its name
+    
   
-  //Window logical volume
-  beWinLogic = new G4LogicalVolume(beWin,  // its solid
-                                         winMaterial,  // its material
-                                         "Beryllium Window");  // its name
-  
- 
-  //Window placement
-  beWinPv = new G4PVPlacement(nullptr,  // no rotation
-                    G4ThreeVector(0.0, 0.0, offset), // at position
-                    beWinLogic,  // its logical volume
-                    "Beryllium Window",  // its name
-                    logicWorld,  // its mother  volume
-                    false,  // no boolean operation
-                    0,  // copy number
-                    fCheckOverlaps);  // overlaps checking
-  
-  G4VisAttributes* beWinColor= new G4VisAttributes(G4Colour(0.6, 0.2, 0.0, 0.8)); //Create the color, transparency is 50%
-  beWinColor->SetVisibility(true); //Set the visibility
-  beWinLogic->SetVisAttributes(beWinColor); //Give the window the color
-
+    //Window placement
+    beWinPv = new G4PVPlacement(nullptr,  // no rotation
+                      G4ThreeVector(0.0, 0.0, offset), // at position
+                      beWinLogic,  // its logical volume
+                      "Beryllium Window",  // its name
+                      logicWorld,  // its mother  volume
+                      false,  // no boolean operation
+                      0,  // copy number
+                      fCheckOverlaps);  // overlaps checking
+    
+    G4VisAttributes* beWinColor= new G4VisAttributes(G4Colour(0.6, 0.2, 0.0, 0.8)); //Create the color, transparency is 50%
+    beWinColor->SetVisibility(true); //Set the visibility
+    beWinLogic->SetVisAttributes(beWinColor); //Give the window the color
+  }
   //always return the physical World
   return physWorld;
 }

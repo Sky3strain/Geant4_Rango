@@ -1,4 +1,5 @@
 //Structure from Josh Woods code for the Phoswich
+//Optical property stuff from Josh Wood's optical code optical_2021-05-05
 //Header file to define materials.
 #ifndef MaterialsList_h
 #define MaterialsList_h 1
