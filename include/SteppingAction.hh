@@ -59,6 +59,8 @@ class SteppingAction : public G4UserSteppingAction
     G4LogicalVolume* fScoringVolume = nullptr; //Pointer to scoring volume
     G4String volumeName; //Variable for volume name
     G4String nextVolume; //Variable containing the next volume
+    G4int scinPhotonCount; //Variable to count photons
+    G4int fPhotonCounter; 
 };
 }
 #endif

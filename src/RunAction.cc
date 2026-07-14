@@ -79,9 +79,14 @@ RunAction::RunAction()
   transTree->Branch("Counter", &fCounter, "Counter/I");
 
   //Thickness data tree
-  thickTree = new TTree("thickTree", "Transmission");
+  thickTree = new TTree("thickTree", "Thickness");
   thickTree->Branch("Thickness", &fThick, "Thickness/D");
   thickTree->Branch("Edep", &Edep, "Edep/D");
+
+  //Optical photon data tree
+  photonTree = new TTree("photonTree", "Photon");
+  photonTree->Branch("Energy", &fEnergy, "Energy/D");
+  photonTree->Branch("PhotonCounter", &fPhotonCounter, "PhotonCounter/I");
 }
 
 RunAction::~RunAction(){
@@ -102,6 +107,12 @@ RunAction::~RunAction(){
   fRootFileThick = new TFile(fileNameThick, "RECREATE");
   thickTree->Write();
   fRootFileThick->Close();
+
+  //Optical photon data file
+  G4String fileNamePhoton = "opticalPhoton.root";
+  fRootFilePhoton = new TFile(fileNamePhoton, "RECREATE");
+  photonTree->Write();
+  fRootFilePhoton->Close();
 }
 
   

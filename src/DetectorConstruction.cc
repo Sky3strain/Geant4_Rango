@@ -171,11 +171,11 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   //
   //Beryllium Window
   //
-  G4bool windowOn = false;
+  G4bool windowOn = true;
   if(windowOn == true)
   {
     //Thickness of beryllium window
-    beWinHz = 0.2*cm;
+    beWinHz = 1.651*mm;
 
     //Window material
     winMaterial = G4Material::GetMaterial("Al");

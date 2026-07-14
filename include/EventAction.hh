@@ -63,6 +63,10 @@ class EventAction : public G4UserEventAction
 
     void DetCount(G4int detCounter) {fDetCounter = detCounter;}
     G4int GetDetectorCount() {return fDetCounter;}
+
+    G4int GetPhotonCount() {return fPhotonCount;}
+
+    void AddPhotonCount() {fPhotonCount++;}
  
     
   private:
@@ -71,6 +75,7 @@ class EventAction : public G4UserEventAction
     G4Event* event = nullptr; //Event variable
     G4int fBeCounter = 0.; //Pointer for transmission count through window
     G4int fDetCounter = 0.; //Pointer for transmission count through detector
+    G4int fPhotonCount = 0.; //Pointer for count of optical photons
     G4double fParticleEnergy = 0.; //Pointer for particle energy
     G4double fDetThick = 0.; //Pointer for detector thickness
 };

@@ -67,6 +67,7 @@ void EventAction::BeginOfEventAction(const G4Event* event)
   G4cout<< "\nEvent#: "<<eventID<<G4endl; //Print the event ID
   fBeCounter = 0.;
   fDetCounter = 0.;
+  fPhotonCount = 0.;
 }
   
 void EventAction::EndOfEventAction(const G4Event* event)
@@ -102,12 +103,16 @@ void EventAction::EndOfEventAction(const G4Event* event)
   
   G4int transmissionCount = GetTransmissionCount();
   G4int detectorCount = GetDetectorCount();
+  G4int photonCount = GetPhotonCount();
   G4int totalCount = detectorCount+transmissionCount;
 
-  //Write to Root file
-  fRunAction->SetCounter(totalCount);
+  //Fill optical photon data
+  fRunAction->SetPhotonCounter(photonCount);
+  TTree* photonTree = fRunAction->GetPhotonTree();
+  photonTree->Fill();
 
   //Fill transmission tree
+  fRunAction->SetCounter(totalCount);
   TTree* transTree = fRunAction->GetTransTree();
   transTree->Fill();
 

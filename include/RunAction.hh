@@ -64,10 +64,12 @@ class RunAction : public G4UserRunAction
     TTree* GetTransTree() {return transTree;} //Return the tree containing transmission data
     TTree* GetEdepTree() {return edepTree;} //Return the tree containing energy deposition data
     TTree* GetThickTree() {return thickTree;} //Return the tree containing thickness data
+    TTree* GetPhotonTree() {return photonTree;} //Return the tree with optical photon data
     void SetEnergy(G4double val) {fEnergy = val;} //Function to set energy
     void SetCounter(G4int val) {fCounter = val;} //Function to set transmission counter
     void SetEdep(G4double val) {Edep = val;} //Function to set energy deposited
     void SetThickness(G4double val) {fThick = val;} //Function to set thickness
+    void SetPhotonCounter(G4int val) {fPhotonCounter = val;} //Function to set transmission counter
 
   private:
     //Energy deposition variables
@@ -78,13 +80,16 @@ class RunAction : public G4UserRunAction
     TFile* fRootFileTrans = nullptr; //Transmission file
     TFile* fRootFileEdep = nullptr; //Energy deposition file
     TFile* fRootFileThick = nullptr; //Thickness file
+    TFile* fRootFilePhoton = nullptr; //Optical photon data file
     TTree* transTree = nullptr; //Transmission tree
     TTree* edepTree = nullptr; //Energy deposition tree
     TTree* thickTree = nullptr; //Thickness tree 
+    TTree* photonTree = nullptr; //Optical photon data tree
 
     //Create variables
     G4double fEnergy; 
     G4int fCounter;
+    G4int fPhotonCounter;
     G4double Edep;
     G4double fThick;
 };

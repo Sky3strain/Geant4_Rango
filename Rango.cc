@@ -32,7 +32,7 @@
 #include "ActionInitialization.hh"
 #include "DetectorConstruction.hh"
 #include "MaterialsList.hh"
-#include "QBBC.hh"
+#include "PhysicsList.hh"
 #include "EventAction.hh"
 
 #include "G4RunManagerFactory.hh"
@@ -40,6 +40,8 @@
 #include "G4UIExecutive.hh"
 #include "G4UImanager.hh"
 #include "G4VisExecutive.hh"
+#include "G4EmStandardPhysics_option4.hh"
+#include "G4EmStandardPhysics.hh"
 
 using namespace Rango;
 
@@ -69,7 +71,9 @@ using namespace Rango;
   runManager->SetUserInitialization(new DetectorConstruction());
 
   // Physics list
-  auto physicsList = new QBBC;
+  //To use PhysicsList();
+  // auto physicsList = new PhysicsList();
+  auto physicsList = new PhysicsList();
   physicsList->SetVerboseLevel(1);
   runManager->SetUserInitialization(physicsList);
 

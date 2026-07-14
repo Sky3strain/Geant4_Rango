@@ -65,46 +65,50 @@ void SteppingAction::UserSteppingAction(const G4Step* step)
   const G4int trackId = step->GetTrack()->GetTrackID();
   const G4int parentId = step->GetTrack()->GetParentID();
   const G4String processName = step->GetPostStepPoint()->GetProcessDefinedStep()->GetProcessName();
-  
+  G4double OPEnergy = step->GetTotalEnergyDeposit();
+  //Count optical photons
+  fEventAction->AddPhotonCount();
+
   if (step->GetTrack()->GetNextVolume() != 0)
       volumeName = step->GetTrack()->GetNextVolume()->GetName();
    else // particle left world volume, use track volume name
       volumeName = step->GetTrack()->GetVolume()->GetName();
 
   //Flag if particle goes into the world
-  if (volumeName == "World"){
-    G4cout<< "Uh oh that beam is in the world! :("<<G4endl;
-    return;
-  }
+  // if (volumeName == "World"){
+  //   G4cout<< "Uh oh that beam is in the world! :("<<G4endl;
+  //   return;
+  // }
   
   G4bool isPrimary = (trackId == 1) && (parentId == 0);
   
-  if (isPrimary) {
-        G4cout << "\n   Track ID: "<<trackId << " ";
-        G4cout << "\n   Particle Name: "<<particleName << " ";
-        G4cout << "\n   Time: "<<step->GetPreStepPoint()->GetGlobalTime() * ns<< " ";
-        G4cout << "\n   Position: "<<step->GetTrack()->GetPosition()<< " ";
-        G4cout << "\n   Etot: " << step->GetTrack()->GetKineticEnergy() / keV << " ";
-        G4cout << "\n   Edep: " << step->GetTotalEnergyDeposit() / keV << " ";
-        G4cout << "\n   Step Length: "<<step->GetStepLength() << " ";
-        G4cout << "\n   Track Length: "<<step->GetTrack()->GetTrackLength() << " ";
-        G4cout << "\n   Volume Name: "<<volumeName << " ";
-        G4cout << "\n   Process Name: "<<processName << G4endl;
-    } // END if (isPrimary)
-    else{
-        G4cout << "\n   Daugter Track ID: "<<trackId << " ";
-        G4cout << "\n   Particle Name: "<<particleName << " ";
-        G4cout << "\n   Time: "<<step->GetPreStepPoint()->GetGlobalTime() * ns<< " ";
-        G4cout << "\n   Position: "<<step->GetTrack()->GetPosition()<< " ";
-        G4cout << "\n   Etot: " << step->GetTrack()->GetKineticEnergy() / keV << " ";
-        G4cout << "\n   Edep: " << step->GetTotalEnergyDeposit() / keV << " ";
-        G4cout << "\n   Step Length: "<<step->GetStepLength() << " ";
-        G4cout << "\n   Track Length: "<<step->GetTrack()->GetTrackLength() << " ";
-        G4cout << "\n   Volume Name: "<<volumeName << " ";
-        G4cout << "\n   Process Name: "<<processName << G4endl;
-    }
+  // if (isPrimary) {
+  //       G4cout << "\n   Track ID: "<<trackId << " ";
+  //       G4cout << "\n   Particle Name: "<<particleName << " ";
+  //       G4cout << "\n   Time: "<<step->GetPreStepPoint()->GetGlobalTime() * ns<< " ";
+  //       G4cout << "\n   Position: "<<step->GetTrack()->GetPosition()<< " ";
+  //       G4cout << "\n   Etot: " << step->GetTrack()->GetKineticEnergy() / keV << " ";
+  //       G4cout << "\n   Edep: " << step->GetTotalEnergyDeposit() / keV << " ";
+  //       G4cout << "\n   Step Length: "<<step->GetStepLength() << " ";
+  //       G4cout << "\n   Track Length: "<<step->GetTrack()->GetTrackLength() << " ";
+  //       G4cout << "\n   Volume Name: "<<volumeName << " ";
+  //       G4cout << "\n   Process Name: "<<processName << G4endl;
+  //   } // END if (isPrimary)
+  //   else{
+  //       G4cout << "\n   Daugter Track ID: "<<trackId << " ";
+  //       G4cout << "\n   Particle Name: "<<particleName << " ";
+  //       G4cout << "\n   Time: "<<step->GetPreStepPoint()->GetGlobalTime() * ns<< " ";
+  //       G4cout << "\n   Position: "<<step->GetTrack()->GetPosition()<< " ";
+  //       G4cout << "\n   Etot: " << step->GetTrack()->GetKineticEnergy() / keV << " ";
+  //       G4cout << "\n   Edep: " << step->GetTotalEnergyDeposit() / keV << " ";
+  //       G4cout << "\n   Step Length: "<<step->GetStepLength() << " ";
+  //       G4cout << "\n   Track Length: "<<step->GetTrack()->GetTrackLength() << " ";
+  //       G4cout << "\n   Volume Name: "<<volumeName << " ";
+  //       G4cout << "\n   Process Name: "<<processName << G4endl;
+  //   }
 
-    if (G4StrUtil::contains(volumeName, "Detector"))
+
+    if (G4StrUtil::contains(volumeName, "Detector") && particleName != "opticalphoton")
     {
       // collect energy deposited in this step
       const G4double edepStep = step->GetTotalEnergyDeposit();

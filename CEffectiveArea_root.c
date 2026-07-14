@@ -40,7 +40,7 @@ void CEffectiveArea_root(){
     hEdep->Draw("HIST L");
 
     //Write effective area data to file
-    std::ofstream EffectiveAreaFile("EffectiveArea_BGO.txt");
+    std::ofstream EffectiveAreaFile("EffectiveArea_NaI_Tl_O4.txt");
     for(int i=1; i<=hEdep->GetNbinsX(); ++i) {
         for(int j=1; j<=hEdep->GetNbinsY(); ++j) {
             if(hEdep->GetBinContent(i,j) > 0){

@@ -9,7 +9,7 @@
 void CTransmission_root(){
     //Import data as a TChain
     TChain *data = new TChain("transTree");
-    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/transmissionBe1MM.root");
+    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/transmission.root");
 
     //Create variables
     Double_t energy;
@@ -49,7 +49,7 @@ void CTransmission_root(){
     hTrans->Draw("HIST L");
 
     //Write data to a file
-    std::ofstream TransmissionFile("Transmission_1-10000keV_Al2MM.txt");
+    std::ofstream TransmissionFile("Transmission_CompDataAl_1.651mm.txt");
     for(int i=1; i<=hTrans->GetNbinsX(); ++i) {
         for(int j=1; j<=hTrans->GetNbinsY(); ++j) {
             if(hTrans->GetBinContent(i,j) > 0){

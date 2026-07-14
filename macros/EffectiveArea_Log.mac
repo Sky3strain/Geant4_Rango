@@ -9,301 +9,301 @@
 /gps/pos/radius 7 cm
 /gps/source/list
 /World/SetWorldMaterial Vaccum
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1.09749877 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1.20450354 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1.32194115 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1.45082878 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1.59228279 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1.74752840 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1.91791026 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 2.10490414 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 2.31012970 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 2.53536449 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 2.78255940 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 3.05385551 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 3.35160265 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 3.67837977 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 4.03701726 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 4.43062146 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 4.86260158 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 5.33669923 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 5.85702082 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 6.42807312 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 7.05480231 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 7.74263683 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 8.49753436 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 9.32603347 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 10.23531020 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 11.23324030 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 12.32846740 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 13.53047770 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 14.84968260 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 16.29750830 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 17.88649530 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 19.63040650 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 21.54434690 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 23.64489410 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 25.95024210 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 28.48035870 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 31.25715850 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 34.30469290 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 37.64935810 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 41.32012400 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 45.34878510 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 49.77023560 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 54.62277220 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 59.94842500 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 65.79332250 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 72.20809020 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 79.24828980 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 86.97490030 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 95.45484570 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 104.76157500 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 114.97570000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 126.18568800 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 138.48863700 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 151.99110800 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 166.81005400 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 183.07382800 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 200.92330000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 220.51307400 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 242.01282600 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 265.60877800 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 291.50530600 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 319.92671400 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 351.11917300 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 385.35285900 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 422.92428700 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 464.15888300 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 509.41380100 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 559.08101800 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 613.59072700 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 673.41506600 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 739.07220300 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 811.13083100 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 890.21508500 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 977.00995700 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1072.26722000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1176.81195000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1291.54967000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1417.47416000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1555.67614000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1707.35265000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 1873.81742000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 2056.51231000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 2257.01972000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 2477.07636000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 2718.58824000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 2983.64724000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 3274.54916000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 3593.81366000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 3944.20606000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 4328.76128000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 4750.81016000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 5214.00829000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 5722.36766000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 6280.29144000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
-/gps/energy 6892.61210000 keV
-/run/beamOn 100000
+/gps/energy 6892.6121000 keV
+/run/beamOn 1000
 
 /gps/energy 7564.63328000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 8302.17568000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 9111.62756000 keV
-/run/beamOn 100000
+/run/beamOn 1000
 
 /gps/energy 10000.00000000 keV
-/run/beamOn 100000
+/run/beamOn 1000

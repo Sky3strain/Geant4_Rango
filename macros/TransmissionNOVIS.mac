@@ -9,91 +9,91 @@
 /gps/pos/radius 7 cm
 /gps/source/list
 /World/SetWorldMaterial Vaccum
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 2 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 3 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 4 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 5 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 6 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 7 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 8 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 9 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 10 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 11 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 12 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 13 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 14 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 15 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 16 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 17 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 18 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 19 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 20 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 21 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 22 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 23 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 24 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 25 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 26 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 27 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 28 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 29 keV
-/run/beamOn 100000
+/run/beamOn 10
 
 /gps/energy 30 keV
-/run/beamOn 100000
+/run/beamOn 10
