@@ -98,7 +98,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
     G4LogicalVolume* logicWorld = nullptr; //Pointer to logical world
 
-    G4LogicalVolume* beWinLogic = nullptr; //Pointer to beryllium window
+    G4LogicalVolume* winLogic = nullptr; //Pointer to window
 
     G4Material* detMaterial = nullptr;  // Pointer to the detector  material
 
@@ -122,11 +122,11 @@ class DetectorConstruction : public G4VUserDetectorConstruction
 
     G4Tubs* detector = nullptr; //Shape of detector
 
-    G4Tubs* beWin = nullptr; //Shape of window
+    G4Tubs* win = nullptr; //Shape of window
 
     G4PVPlacement* physWorld = nullptr; //Physical world volume
 
-    G4PVPlacement* beWinPv = nullptr; //Physical volume for window
+    G4PVPlacement* winPv = nullptr; //Physical volume for window
 
     G4PVPlacement* detPv = nullptr; //Physical volume for detector
 
@@ -136,7 +136,7 @@ class DetectorConstruction : public G4VUserDetectorConstruction
     G4double detHz;
     G4double detPhimin;
     G4double detPhimax;
-    G4double beWinHz;
+    G4double winHz;
     G4double offset;
     G4double detHzReal;
     G4double posOffset;

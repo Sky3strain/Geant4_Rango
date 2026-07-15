@@ -42,10 +42,8 @@ target_link_libraries(Rango
 # relies on these scripts being in the current working directory.
 #
 set(EXAMPLEB1_SCRIPTS
-  exampleB1.out
   vis.mac
   init_vis.mac
-  exampleB1.in
   )
 
 foreach(_script ${EXAMPLEB1_SCRIPTS})
