@@ -119,7 +119,7 @@ if thick_win_1 == "yes":
         data_name_win1 = f"Al_{new_thick_1*10}mm"
 
 print("Window Choices (type the number associated with the window): ")
-print("Warning!: Teflon is no longer an option.")
+print("Note: Teflon is no longer an option.")
 print("(1) Be_1mm ")
 print("(2) Mg_1mm ")
 print("(3) Al_1mm ")
