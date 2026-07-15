@@ -78,6 +78,46 @@ else:
     print("Must Enter A Window To Continue!")
     sys.exit()
 
+thick_win_1 = input("Do you want to change the thickness of your window? (yes/no): ")
+print("Note: Not applicable to Teflon")
+if thick_win_1 == "yes":
+    thickness_in_1 = float(input("Choose Your Window Thickness: "))
+    print("You entered:", thickness_in_1, "cm")
+    if (win_input_1 == "1"):
+        win_thick_1 = dataBe1MM
+    elif (win_input_1 == "2"):
+        win_thick_1 = dataMg1MM
+    elif (win_input_1 == "3"):
+        win_thick_1 = dataAl1MM
+    elif (win_input_1 == "4"):
+        win_thick_1 = dataAl2MM
+    else:
+        print("Must Enter A Window Thickness To Continue!")
+        sys.exit()
+    trans_Ratio_1 = win_thick_1
+    #Thickness in cm
+    if win_input_1 == "1":
+        thickness_OG_1 = 0.1
+    if win_input_1 == "2":
+        thickness_OG_1 = 0.1
+    if win_input_1 == "3":
+        thickness_OG_1 = 0.1
+    if win_input_1 == "4":
+        thickness_OG_1 = 0.1
+
+    atten_Length_1 = -thickness_OG_1/ np.log(trans_Ratio_1[:,1])
+    atten_Length_arr_1 = np.column_stack((trans_Ratio_1[:,0], atten_Length_1))
+    new_thick_1 = thickness_in_1
+    new_trans_1 = np.exp(-new_thick_1/atten_Length_arr_1[:,1])
+    new_trans_arr_1 = np.column_stack((trans_Ratio_1[:,0], new_trans_1))
+    win_data_1 = new_trans_arr_1
+    if win_input_1 == "1":
+        data_name_1 = f"Be_{new_thick_1*10}mm"
+    elif win_input_1 == "2":
+        data_name_win1 = f"Mg_{new_thick_1*10}mm"
+    elif win_input_1 == "3" or win_input_1 == "4":
+        data_name_win1 = f"Al_{new_thick_1*10}mm"
+
 print("Window Choices (type the number associated with the window): ")
 print("Warning!: Teflon is no longer an option.")
 print("(1) Be_1mm ")
@@ -111,6 +151,46 @@ elif (win_input_2 == "5"):
 else:
     print("Must Enter A Window To Continue!")
     sys.exit()
+
+thick_win_2 = input("Do you want to change the thickness of your window? (yes/no): ")
+print("Note: Not applicable to Teflon")
+if thick_win_2 == "yes":
+    thickness_in_2 = float(input("Choose Your Window Thickness: "))
+    print("You entered:", thickness_in_2, "cm")
+    if (win_input_2 == "1"):
+        win_thick_2 = dataBe2MM
+    elif (win_input_2 == "2"):
+        win_thick_2 = dataMg2MM
+    elif (win_input_2 == "3"):
+        win_thick_2 = dataAl2MM
+    elif (win_input_2 == "4"):
+        win_thick_2 = dataAl2MM
+    else:
+        print("Must Enter A Window Thickness To Continue!")
+        sys.exit()
+    trans_Ratio_2 = win_thick_2
+    #Thickness in cm
+    if win_input_2 == "1":
+        thickness_OG_2 = 0.1
+    if win_input_2 == "2":
+        thickness_OG_2 = 0.1
+    if win_input_2 == "3":
+        thickness_OG_2 = 0.1
+    if win_input_2 == "4":
+        thickness_OG_2 = 0.1
+
+    atten_Length_2 = -thickness_OG_2/ np.log(trans_Ratio_2[:,1])
+    atten_Length_arr_2 = np.column_stack((trans_Ratio_2[:,0], atten_Length_2))
+    new_thick_2 = thickness_in_2
+    new_trans_2 = np.exp(-new_thick_2/atten_Length_arr_2[:,1])
+    new_trans_arr_2 = np.column_stack((trans_Ratio_2[:,0], new_trans_2))
+    win_data_2 = new_trans_arr_2
+    if win_input_2 == "1":
+        data_name_2 = f"Be_{new_thick_2*10}mm"
+    elif win_input_2 == "2":
+        data_name_win2 = f"Mg_{new_thick_2*10}mm"
+    elif win_input_2 == "3" or win_input_2 == "4":
+        data_name_win2 = f"Al_{new_thick_2*10}mm"
 
 #Find the effectice area with transmission from the first window
 if win_input_1 == "5":
@@ -188,4 +268,3 @@ if win_input_1 == "5":
     plt.ylabel("Effective Area (cm^2)", fontsize=16)
     plt.title(f"{det_name} Effective Area With {data_name_win1} And {data_name_win2}", fontsize=16)
     plt.show()
-
