@@ -8,7 +8,7 @@
 /gps/pos/shape Circle 
 /gps/pos/radius 7 cm
 /gps/source/list
-/World/SetWorldMaterial Vaccum
+/World/SetWorldMaterial Vacuum
 /run/beamOn 1000
 
 /gps/energy 1.09749877 keV

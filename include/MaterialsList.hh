@@ -30,7 +30,7 @@ class MaterialsList
         G4Material* NaI; //Define Sodium Iodide as a material
         G4Material* CsI; //Define Cesium Iodide as a material
         G4Material* Air; //Define Air as a material
-        G4Material* Vaccum; //Define a vaccum
+        G4Material* Vacuum; //Define a Vacuum
         G4Material* Be; //Define Beryllium as a material
         G4Material* Mg;//Define Magnesium as a material
         G4Material* Al;//Define Aluminum as a material

@@ -102,7 +102,7 @@ G4VPhysicalVolume* DetectorConstruction::DefineVolumes()
   // World
   //
   G4double world_size = 1.0*m; //World size
-  worldMaterial = G4Material::GetMaterial("Air");
+  worldMaterial = G4Material::GetMaterial("Vacuum");
 
   //Construt a cube world
   auto solidWorld =

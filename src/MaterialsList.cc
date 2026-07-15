@@ -17,7 +17,7 @@ MaterialsList* MaterialsList::GetInstance()
 //MaterialsList constrcutor
 MaterialsList::MaterialsList() 
 //Define the materials
-: NaI(0), CsI(0), Air(0), Vaccum(0), Be(0), Mg(0), Al(0), Teflon(0), CdTe(0), CsI_Na(0), CsI_Tl(0), CeBr3(0), NaI_Tl(0), BGO(0)
+: NaI(0), CsI(0), Air(0), Vacuum(0), Be(0), Mg(0), Al(0), Teflon(0), CdTe(0), CsI_Na(0), CsI_Tl(0), CeBr3(0), NaI_Tl(0), BGO(0)
 {
   if( instance == 0 ){
       instance = this; // give the constructor a pointer to itself
@@ -31,7 +31,7 @@ MaterialsList::MaterialsList()
    DefineMaterial("NaI");
    DefineMaterial("CsI");
    DefineMaterial("Air");
-   DefineMaterial("Vaccum");
+   DefineMaterial("Vacuum");
    DefineMaterial("Be");
    DefineMaterial("Mg");
    DefineMaterial("Al");
@@ -51,7 +51,7 @@ MaterialsList::~MaterialsList()
   delete NaI;
   delete CsI;
   delete Air;
-  delete Vaccum;
+  delete Vacuum;
   delete Be;
   delete Mg;
   delete Al;
@@ -101,10 +101,10 @@ G4bool MaterialsList::DefineMaterial( G4String sMaterialNameIn )
       Air = nist->FindOrBuildMaterial("G4_AIR");
       Air->SetName( sMaterialNameIn);
    }
-   //Define space vaccum
-   else if( sMaterialNameIn == "Vaccum"){
-      Vaccum = nist->FindOrBuildMaterial("G4_Galactic");
-      Vaccum->SetName( sMaterialNameIn);
+   //Define space Vacuum
+   else if( sMaterialNameIn == "Vacuum"){
+      Vacuum = nist->FindOrBuildMaterial("G4_Galactic");
+      Vacuum->SetName( sMaterialNameIn);
    }
    //Define beryllium
    else if( sMaterialNameIn == "Be"){

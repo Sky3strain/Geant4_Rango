@@ -8,5 +8,5 @@
 /gps/pos/shape Circle 
 /gps/pos/radius 7 cm
 /gps/source/list
-/World/SetWorldMaterial Vaccum
+/World/SetWorldMaterial Vacuum
 /run/beamOn 10
