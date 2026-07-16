@@ -2,16 +2,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 import sys
 
-data_CsI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/EffectiveAreaStudies/EffectiveArea_CsI_Tl.txt", delimiter=",", dtype=float)
-data_CeBr3 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/EffectiveAreaStudies/EffectiveArea_CeBr3.txt", delimiter=",", dtype=float)
-data_NaI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/EffectiveAreaStudies/EffectiveArea_NaI_Tl.txt", delimiter=",", dtype=float)
-data_BGO = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/EffectiveAreaStudies/EffectiveArea_BGO.txt", delimiter=",", dtype=float)
-dataBe1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/TransmissionStudies/Transmission_1-10000keV_Be1MM.txt", delimiter=',', dtype=float)
-dataMg1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/TransmissionStudies/Transmission_1-10000keV_Mg1MM.txt", delimiter=',', dtype=float)
-dataAl1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/TransmissionStudies/Transmission_1-10000keV_Al1MM.txt", delimiter=',', dtype=float)
-dataAl2MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/TransmissionStudies/Transmission_1-10000keV_Al2MM.txt", delimiter=',', dtype=float)
-dataTef100MIC = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/TransmissionStudies/Transmission_1-10000keV_Tef0.1MM.txt", delimiter=',', dtype=float)
-dataTef200MIC = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/plots/TransmissionStudies/Transmission_1-10000keV_Tef0.2MM.txt", delimiter=',', dtype=float)
+data_CsI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/EffectiveArea_CsI_Tl.txt", delimiter=",", dtype=float)
+data_CeBr3 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/EffectiveArea_CeBr3.txt", delimiter=",", dtype=float)
+data_NaI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/EffectiveArea_NaI_Tl.txt", delimiter=",", dtype=float)
+data_BGO = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/EffectiveArea_BGO.txt", delimiter=",", dtype=float)
+dataBe1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/Transmission_1-10000keV_Be1MM.txt", delimiter=',', dtype=float)
+dataMg1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/Transmission_1-10000keV_Mg1MM.txt", delimiter=',', dtype=float)
+dataAl1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/Transmission_1-10000keV_Al1MM.txt", delimiter=',', dtype=float)
+dataAl2MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/Transmission_1-10000keV_Al2MM.txt", delimiter=',', dtype=float)
+dataTef100MIC = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/Transmission_1-10000keV_Tef0.1MM.txt", delimiter=',', dtype=float)
+dataTef200MIC = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/Transmission_1-10000keV_Tef0.2MM.txt", delimiter=',', dtype=float)
 
 print("Detector Choices: ")
 print("(1) CsI_Tl ")

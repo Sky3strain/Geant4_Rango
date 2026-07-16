@@ -3,14 +3,14 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #Import text files
-# data_CdTe = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/EffectiveAreaStudies/EffectiveArea_CdTe.txt", delimiter=",", dtype=float)
-# data_CsI_Na = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/EffectiveAreaStudies/EffectiveArea_CsI_Na.txt", delimiter=",", dtype=float)
-# data_CsI = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/EffectiveAreaStudies/EffectiveArea_CsI.txt", delimiter=",", dtype=float)
-# data_NaI = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/EffectiveAreaStudies/EffectiveArea_NaI.txt", delimiter=",", dtype=float)
-data_CsI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/EffectiveAreaStudies/EffectiveArea_CsI_Tl.txt", delimiter=",", dtype=float)
-data_CeBr3 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/EffectiveAreaStudies/EffectiveArea_CeBr3.txt", delimiter=",", dtype=float)
-data_NaI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/EffectiveAreaStudies/EffectiveArea_NaI_Tl.txt", delimiter=",", dtype=float)
-data_BGO = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/EffectiveAreaStudies/EffectiveArea_BGO.txt", delimiter=",", dtype=float)
+# data_CdTe = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_CdTe.txt", delimiter=",", dtype=float)
+# data_CsI_Na = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_CsI_Na.txt", delimiter=",", dtype=float)
+# data_CsI = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_CsI.txt", delimiter=",", dtype=float)
+# data_NaI = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_NaI.txt", delimiter=",", dtype=float)
+data_CsI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_CsI_Tl.txt", delimiter=",", dtype=float)
+data_CeBr3 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_CeBr3.txt", delimiter=",", dtype=float)
+data_NaI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_NaI_Tl.txt", delimiter=",", dtype=float)
+data_BGO = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_BGO.txt", delimiter=",", dtype=float)
 
 #Plot
 # plt.plot(data_CsI_Na[:,0], data_CsI_Na[:,1], alpha = 0.6, color='darkblue',  linestyle='--', label="CsI_Na", linewidth=2)

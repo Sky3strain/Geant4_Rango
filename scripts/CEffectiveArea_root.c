@@ -21,13 +21,6 @@ void CEffectiveArea_root(){
     //Set branch for energy deposition for data TChain
     data->SetBranchAddress("Edep", &edep);
 
-    //Create TTree
-    TTree* effectiveArea = data->CopyTree("Edep > 0");
-
-    //Set bramches for effectiveArea TTree
-    effectiveArea->SetBranchAddress("Energy", &energy);
-    effectiveArea->SetBranchAddress("Edep", &edep);
-
     //Create histograms for energy deposition and data
     TH1D *hEdep = new TH1D("hEdep", "Effective Area vs Energy; Energy; Effective Area (cm^2)", 10001, -0.5, 10000.5);
     TH1D *hTotal = new TH1D("hTotal", "Total; Energy; Count", 10001, -0.5, 10000.5);

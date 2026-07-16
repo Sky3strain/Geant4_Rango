@@ -21,13 +21,6 @@ void CEffectiveArea_root_Thick(){
     //Set Edep branch for data TChain
     data->SetBranchAddress("Edep", &edep);
 
-    //Create effective area tree
-    TTree* effectiveArea = data->CopyTree("Edep > 0");
-
-    //Create thickness and edep branches for effectiveArea TTree
-    effectiveArea->SetBranchAddress("Thickness", &thickness);
-    effectiveArea->SetBranchAddress("Edep", &edep);
-
     //Create Energy deposition histogram and data histogram
     TH1D *hEdep = new TH1D("hEdep", "Effective Area vs Thickness; Thickness; Effective Area (cm^2)", 21, -0.5, 20.5);
     TH1D *hTotal = new TH1D("hTotal", "Total; Thickness; Count", 21, -0.5, 20.5);

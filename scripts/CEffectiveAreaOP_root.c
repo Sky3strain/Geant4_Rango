@@ -9,7 +9,7 @@
 void CEffectiveAreaOP_root(){
     //Import data file
     TChain *data = new TChain("photonTree");
-    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/100000Runs_Log_OP/opticalPhoton.root");
+    data->Add("/home/skyes/Geant4_MSFC/GRango_Data/100000Runs_Log_OP/opticalPhoton.root");
 
     //Create variables
     Int_t photonCount;
@@ -20,13 +20,6 @@ void CEffectiveAreaOP_root(){
 
     //Set branch for energy deposition for data TChain
     data->SetBranchAddress("PhotonCounter", &photonCount);
-    // //Create TTree
-    // TTree* effectiveArea = data->CopyTree("PhotonCounter");
-    // effectiveArea->Print();
-
-    // //Set bramches for effectiveArea TTree
-    // // effectiveArea->SetBranchAddress("Energy", &energy);
-    // effectiveArea->SetBranchAddress("PhotonCounter", &photonCount);
 
     //Create histograms for energy deposition and data
     TH1D *hPhoton = new TH1D("hPhoton", "Effective Area vs Energy; Energy; Effective Area (cm^2)", 10001, 0.5, 10000.5);

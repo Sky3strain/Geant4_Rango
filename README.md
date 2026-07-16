@@ -1,6 +1,3 @@
-Rango Detector characterization
-In order to use the DetCharacterization.py code for Rango you need a few data sets. Run The EffectiveArea_Log.mac macro for BGO, CeBr3, CsI_Tl, and NaI_Tl, make sure the window is off by setting windowOn = false in DetectorConstruction.cc. After each run to get the effective area data for each scintillator in /scripts use the CEffectiveArea_root.c then feed this data into EffectiveArea.py. This is the data you will import into DetCharacterization.py in the beginning of the code. Do the same thing for transmission except now windowOn = true and set the window material. Run EffectiveArea_Log.mac for windows of Be 1mm, Mg 1mm, Al 1mm, Al 2mm, Teflon 0.1mm, and Teflon 0.2 mm. For each run, run the script CTransmission_root.c. Then feed this data into ETransmissionData.py. This will give you the transmission data to use in DetCharacterization.py.
-
 \page ExampleB1 Example B1
 
  This example demonstrates a very simple application where an energy

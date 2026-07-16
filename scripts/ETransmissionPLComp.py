@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #Import text file
-dataAl1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/TransmissionStudies/Transmission_1-10000keV_Al1MM.txt", delimiter=',', dtype=float)
-dataAl1MM_O4 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/TransmissionStudies/Transmission_1-10000keV_Al1MM_O4.txt", delimiter=',', dtype=float)
+dataAl1MM = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/TransmissionStudies/Transmission_1-10000keV_Al1MM.txt", delimiter=',', dtype=float)
+dataAl1MM_O4 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/TransmissionStudies/Transmission_1-10000keV_Al1MM_O4.txt", delimiter=',', dtype=float)
 
 #plot
 plt.plot(dataAl1MM[:,0], dataAl1MM[:,1], color='limegreen', label="Al 1mm")

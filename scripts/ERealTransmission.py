@@ -4,10 +4,10 @@ import numpy as np
 
 np.set_printoptions(suppress=True, precision=2)
 
-data_Al_1mm_Ba133 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/RealTransmissionData/Al_1mm_Ba133.txt", dtype=int)
-data_Al_2mm_Ba133 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/RealTransmissionData/Al_2mm_Ba133.txt", dtype=int)
-data_Background = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/RealTransmissionData/Background.txt", dtype=int)
-data_NoAl_Ba133 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/RealTransmissionData/NoAl_Ba133.txt", dtype=int)
+data_Al_1mm_Ba133 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/RealTransmissionData/Al_1mm_Ba133.txt", dtype=int)
+data_Al_2mm_Ba133 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/RealTransmissionData/Al_2mm_Ba133.txt", dtype=int)
+data_Background = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/RealTransmissionData/Background.txt", dtype=int)
+data_NoAl_Ba133 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/RealTransmissionData/NoAl_Ba133.txt", dtype=int)
 
 #Subtract background from data with 1 mm Al
 bgSub_Al_1mm_Ba133 = data_Al_1mm_Ba133[:,1] - data_Background[:,1]
@@ -70,10 +70,10 @@ print("81.00 keV line trans ratio 2mm: ", total_Al2mm_81/total_NoAl_81)
 
 
 #Same thing for Cd109
-data_Al_1mm_Cd109 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/RealTransmissionData/Al_1mm_Cd109.txt", dtype=int)
-data_Al_2mm_Cd109 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/RealTransmissionData/Al_2mm_Cd109.txt", dtype=int)
-data_Background = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/RealTransmissionData/Background.txt", dtype=int)
-data_NoAl_Cd109 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/RealTransmissionData/NoAl_Cd109.txt", dtype=int)
+data_Al_1mm_Cd109 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/RealTransmissionData/Al_1mm_Cd109.txt", dtype=int)
+data_Al_2mm_Cd109 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/RealTransmissionData/Al_2mm_Cd109.txt", dtype=int)
+data_Background = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/RealTransmissionData/Background.txt", dtype=int)
+data_NoAl_Cd109 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/RealTransmissionData/NoAl_Cd109.txt", dtype=int)
 
 #Subtract background from data with 1 mm Al
 bgSub_Al_1mm_Cd109 = data_Al_1mm_Cd109[:,1] - data_Background[:,1]

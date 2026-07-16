@@ -3,12 +3,12 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #Import text file
-dataBe1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/TransmissionStudies/Transmission_1-10000keV_Be1MM.txt", delimiter=',', dtype=float)
-dataMg1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/TransmissionStudies/Transmission_1-10000keV_Mg1MM.txt", delimiter=',', dtype=float)
-dataAl1MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/TransmissionStudies/Transmission_1-10000keV_Al1MM.txt", delimiter=',', dtype=float)
-dataAl2MM = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/TransmissionStudies/Transmission_1-10000keV_Al2MM.txt", delimiter=',', dtype=float)
-dataTef100MIC = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/TransmissionStudies/Transmission_1-10000keV_Tef0.1MM.txt", delimiter=',', dtype=float)
-dataTef200MIC = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/Plots/TransmissionStudies/Transmission_1-10000keV_Tef0.2MM.txt", delimiter=',', dtype=float)
+dataBe1MM = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/TransmissionStudies/Transmission_1-10000keV_Be1MM.txt", delimiter=',', dtype=float)
+dataMg1MM = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/TransmissionStudies/Transmission_1-10000keV_Mg1MM.txt", delimiter=',', dtype=float)
+dataAl1MM = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/TransmissionStudies/Transmission_1-10000keV_Al1MM.txt", delimiter=',', dtype=float)
+dataAl2MM = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/TransmissionStudies/Transmission_1-10000keV_Al2MM.txt", delimiter=',', dtype=float)
+dataTef100MIC = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/TransmissionStudies/Transmission_1-10000keV_Tef0.1MM.txt", delimiter=',', dtype=float)
+dataTef200MIC = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/TransmissionStudies/Transmission_1-10000keV_Tef0.2MM.txt", delimiter=',', dtype=float)
 
 #plot
 plt.plot(dataBe1MM[:,0], dataBe1MM[:,1], color='blue', label="Be 1mm", alpha=0.8)
