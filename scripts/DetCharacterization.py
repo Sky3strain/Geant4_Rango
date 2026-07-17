@@ -40,6 +40,29 @@ else:
     print("Must Enter A Detector To Continue!")
     sys.exit()
 
+thick_det = input("Do you want to change the thickness of your detector? (yes/no): ")
+if thick_det == "yes":
+    thickness_in_det = float(input("Choose Your Window Thickness: "))
+    print("You entered:", thickness_in_det, "cm")
+    if (det_data == "1"):
+        thick_det = dataBe1MM
+    elif (det_data == "2"):
+        thick_det = dataMg1MM
+    elif (det_data == "3"):
+        thick_det = dataAl1MM
+    elif (det_data == "4"):
+        thick_det = dataAl2MM
+    else:
+        print("Must Enter A Window Thickness To Continue!")
+        sys.exit()
+    geom_thick =  1.5
+    atten_Length_1 = -thickness_OG_1/ np.log(trans_Ratio_1[:,1])
+    atten_Length_arr_1 = np.column_stack((trans_Ratio_1[:,0], atten_Length_1))
+    new_thick_1 = thickness_in_1
+    new_trans_1 = np.exp(-new_thick_1/atten_Length_arr_1[:,1])
+    new_trans_arr_1 = np.column_stack((trans_Ratio_1[:,0], new_trans_1))
+    win_data_1 = new_trans_arr_1
+
 print("Window Choices (type the number associated with the window): ")
 print("(1) Be_1mm ")
 print("(2) Mg_1mm ")
@@ -103,7 +126,7 @@ if thick_win_1 == "yes":
     if win_input_1 == "3":
         thickness_OG_1 = 0.1
     if win_input_1 == "4":
-        thickness_OG_1 = 0.1
+        thickness_OG_1 = 0.2
 
     atten_Length_1 = -thickness_OG_1/ np.log(trans_Ratio_1[:,1])
     atten_Length_arr_1 = np.column_stack((trans_Ratio_1[:,0], atten_Length_1))
@@ -117,6 +140,23 @@ if thick_win_1 == "yes":
         data_name_win1 = f"Mg_{new_thick_1*10}mm"
     elif win_input_1 == "3" or win_input_1 == "4":
         data_name_win1 = f"Al_{new_thick_1*10}mm"
+
+    # plt.ylim(0,1.0)
+    # plt.plot(new_trans_arr_1[:,0], new_trans_arr_1[:,1], alpha = 0.5, color = 'magenta', label = "Be_0.5mm")
+    # plt.plot(dataBe1MM[:,0], dataBe1MM[:,1], alpha = 0.5, color = 'darkmagenta', label = "Be_1mm")
+    # plt.xscale('log')
+    # plt.legend()
+    # plt.xticks(fontsize=16)
+    # plt.yticks(fontsize=16)
+    # plt.grid(which='major', axis='y', linestyle='-', alpha=0.5)
+    # plt.axhline(y=0.1, color='gray', linestyle='-', linewidth=1,alpha=0.5)
+    # plt.axhline(y=0.3, color='gray', linestyle='-', linewidth=1,alpha=0.5)
+    # plt.axhline(y=0.5, color='gray', linestyle='-', linewidth=1,alpha=0.5)
+    # plt.axhline(y=0.7, color='gray', linestyle='-', linewidth=1,alpha=0.5)
+    # plt.axhline(y=0.9, color='gray', linestyle='-', linewidth=1,alpha=0.5)
+    # plt.xlabel("Energy (keV)", fontsize=16)
+    # plt.ylabel("Transmission", fontsize=16)
+    # plt.show()
 
 print("Window Choices (type the number associated with the window): ")
 print("Note: Teflon is no longer an option.")

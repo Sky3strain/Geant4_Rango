@@ -1,3 +1,5 @@
+Note: If there are any bugs in the code email me at sstrai5@lsu.edu
+
 \page ExampleB1 Example B1
 
  This example demonstrates a very simple application where an energy

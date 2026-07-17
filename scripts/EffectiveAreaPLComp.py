@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #Import text files
-data_NaI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_NaI_Tl.txt", delimiter=",", dtype=float)
-data_NaI_Tl_O4 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/EffectiveAreaStudies/EffectiveArea_NaI_Tl_O4.txt", delimiter=",", dtype=float)
+data_NaI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/EffectiveAreaStudies/EffectiveArea_NaI_Tl.txt", delimiter=",", dtype=float)
+data_NaI_Tl_O4 = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/EffectiveAreaStudies/EffectiveArea_NaI_Tl_O4.txt", delimiter=",", dtype=float)
 
 #Plot
 plt.plot(data_NaI_Tl[:,0], data_NaI_Tl[:,1], alpha = 0.6, color='fuchsia', label="NaI_Tl", linewidth=2)

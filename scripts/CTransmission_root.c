@@ -8,8 +8,8 @@
 
 void CTransmission_root(){
     //Import data as a TChain
-    TChain *data = new TChain("transTree");
-    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/transmission.root");
+    TChain *data = new TChain("outTree");
+    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/output.root");
 
     //Create variables
     Double_t energy;

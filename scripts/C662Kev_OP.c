@@ -9,8 +9,8 @@
 
 void C662Kev_OP(){
     //Import file
-    TChain *data = new TChain("photonTree");
-    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/opticalPhoton.root");
+    TChain *data = new TChain("outTree");
+    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/output.root");
 
     //Variables
     Int_t photonCount;

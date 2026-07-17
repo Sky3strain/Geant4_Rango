@@ -8,8 +8,8 @@
 
 void CEffectiveArea_root_Thick(){
     //Import file
-    TChain *data = new TChain("thickTree");
-    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/thicknessAeff.root");
+    TChain *data = new TChain("outTree");
+    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/output.root");
 
     //Create variables
     Double_t edep;

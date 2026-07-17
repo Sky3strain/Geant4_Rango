@@ -8,8 +8,8 @@
 
 void CEffectiveArea_root(){
     //Import data file
-    TChain *data = new TChain("edepTree");
-    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/energyDep.root");
+    TChain *data = new TChain("outTree");
+    data->Add("/home/skyes/Geant4_MSFC/Geant4_Rango/build/output.root");
 
     //Create variables
     Double_t edep;

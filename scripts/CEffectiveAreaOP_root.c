@@ -8,8 +8,8 @@
 
 void CEffectiveAreaOP_root(){
     //Import data file
-    TChain *data = new TChain("photonTree");
-    data->Add("/home/skyes/Geant4_MSFC/GRango_Data/100000Runs_Log_OP/opticalPhoton.root");
+    TChain *data = new TChain("outTree");
+    data->Add("/home/skyes/Geant4_MSFC/GRango_Data/100000Runs_Log_OP/output.root");
 
     //Create variables
     Int_t photonCount;

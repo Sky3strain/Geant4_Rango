@@ -91,15 +91,6 @@ void EventAction::EndOfEventAction(const G4Event* event)
   const auto detConstruction = static_cast<const DetectorConstruction*>(G4RunManager::GetRunManager()->GetUserDetectorConstruction());
   const G4Tubs* detector = detConstruction->GetDet();
   G4double detThick = 2.0*detector->GetZHalfLength();
-
-  //Set energy
-  fRunAction->SetEnergy(particleEnergy / keV);
-  //Set energy deposition
-  fRunAction->SetEdep(fEdep / keV);
-
-  //Fill energy deposition tree
-  TTree* edepTree = fRunAction->GetEdepTree();
-  edepTree->Fill();
   
   G4int transmissionCount = GetTransmissionCount();
   G4int detectorCount = GetDetectorCount();
@@ -108,18 +99,12 @@ void EventAction::EndOfEventAction(const G4Event* event)
 
   //Fill optical photon data
   fRunAction->SetPhotonCounter(photonCount);
-  TTree* photonTree = fRunAction->GetPhotonTree();
-  photonTree->Fill();
-
-  //Fill transmission tree
   fRunAction->SetCounter(totalCount);
-  TTree* transTree = fRunAction->GetTransTree();
-  transTree->Fill();
-
-  //Fill thickness tree
   fRunAction->SetThickness(detThick/ cm);
-  TTree* thickTree = fRunAction->GetThickTree();
-  thickTree->Fill();
+  fRunAction->SetEdep(fEdep / keV);
+  fRunAction->SetEnergy(particleEnergy / keV);
+  TTree* outTree = fRunAction->GetOutTree();
+  outTree->Fill();
 }
 
 }

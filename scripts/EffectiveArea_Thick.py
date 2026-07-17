@@ -3,15 +3,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #Import text files
-data_1keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/ThicknessStudies/EffectiveArea_NaI_1keV_Thick.txt", delimiter=",", dtype=float)
-data_5keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/ThicknessStudies/EffectiveArea_NaI_5keV_Thick.txt", delimiter=",", dtype=float)
-data_10keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/ThicknessStudies/EffectiveArea_NaI_10keV_Thick.txt", delimiter=",", dtype=float)
-data_50keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/ThicknessStudies/EffectiveArea_NaI_50keV_Thick.txt", delimiter=",", dtype=float)
-data_100keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/ThicknessStudies/EffectiveArea_NaI_100keV_Thick.txt", delimiter=",", dtype=float)
-data_500keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/ThicknessStudies/EffectiveArea_NaI_500keV_Thick.txt", delimiter=",", dtype=float)
-data_1000keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/ThicknessStudies/EffectiveArea_NaI_1000keV_Thick.txt", delimiter=",", dtype=float)
-data_5000keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/ThicknessStudies/EffectiveArea_NaI_5000keV_Thick.txt", delimiter=",", dtype=float)
-data_10000keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/Plots/ThicknessStudies/EffectiveArea_NaI_10000keV_Thick.txt", delimiter=",", dtype=float)
+data_1keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/ThicknessStudies/EffectiveArea_NaI_1keV_Thick.txt", delimiter=",", dtype=float)
+data_5keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/ThicknessStudies/EffectiveArea_NaI_5keV_Thick.txt", delimiter=",", dtype=float)
+data_10keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/ThicknessStudies/EffectiveArea_NaI_10keV_Thick.txt", delimiter=",", dtype=float)
+data_50keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/ThicknessStudies/EffectiveArea_NaI_50keV_Thick.txt", delimiter=",", dtype=float)
+data_100keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/ThicknessStudies/EffectiveArea_NaI_100keV_Thick.txt", delimiter=",", dtype=float)
+data_500keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/ThicknessStudies/EffectiveArea_NaI_500keV_Thick.txt", delimiter=",", dtype=float)
+data_1000keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/ThicknessStudies/EffectiveArea_NaI_1000keV_Thick.txt", delimiter=",", dtype=float)
+data_5000keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/ThicknessStudies/EffectiveArea_NaI_5000keV_Thick.txt", delimiter=",", dtype=float)
+data_10000keV = np.loadtxt("/home/skyes/Geant4_MSFC/GRango_Data/plots/ThicknessStudies/EffectiveArea_NaI_10000keV_Thick.txt", delimiter=",", dtype=float)
 
 #Plot data
 plt.ylim(0,130)

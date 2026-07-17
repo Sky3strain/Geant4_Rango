@@ -68,51 +68,21 @@ RunAction::RunAction()
   accumulableManager->Register(fEdep);
   accumulableManager->Register(fEdep2);
 
-  //Energy deposition tree
-  edepTree = new TTree("edepTree", "Edep");
-  edepTree->Branch("Energy", &fEnergy, "Energy/D");
-  edepTree->Branch("Edep", &Edep, "Edep/D");
- 
-  //Transmission data tree
-  transTree = new TTree("transTree", "Transmission");
-  transTree->Branch("Energy", &fEnergy, "Energy/D");
-  transTree->Branch("Counter", &fCounter, "Counter/I");
-
-  //Thickness data tree
-  thickTree = new TTree("thickTree", "Thickness");
-  thickTree->Branch("Thickness", &fThick, "Thickness/D");
-  thickTree->Branch("Edep", &Edep, "Edep/D");
-
-  //Optical photon data tree
-  photonTree = new TTree("photonTree", "Photon");
-  photonTree->Branch("Energy", &fEnergy, "Energy/D");
-  photonTree->Branch("PhotonCounter", &fPhotonCounter, "PhotonCounter/I");
+  //Output tree
+  outTree = new TTree("outTree", "Output");
+  outTree->Branch("Energy", &fEnergy, "Energy/D");
+  outTree->Branch("Edep", &Edep, "Edep/D");
+  outTree->Branch("Counter", &fCounter, "Counter/I");
+  outTree->Branch("Thickness", &fThick, "Thickness/D");
+  outTree->Branch("PhotonCounter", &fPhotonCounter, "PhotonCounter/I"); 
 }
 
 RunAction::~RunAction(){
-  //Transmission data file
-  G4String fileNameTrans = "transmission.root";
-  fRootFileTrans = new TFile(fileNameTrans, "RECREATE");
-  transTree->Write();
-  fRootFileTrans->Close();
-
-  //Energy deposition file
-  G4String fileNameEdep = "energyDep.root";
-  fRootFileEdep = new TFile(fileNameEdep, "RECREATE");
-  edepTree->Write();
-  fRootFileEdep->Close();
-
-  //Effective area with thickness file
-  G4String fileNameThick = "thicknessAeff.root";
-  fRootFileThick = new TFile(fileNameThick, "RECREATE");
-  thickTree->Write();
-  fRootFileThick->Close();
-
-  //Optical photon data file
-  G4String fileNamePhoton = "opticalPhoton.root";
-  fRootFilePhoton = new TFile(fileNamePhoton, "RECREATE");
-  photonTree->Write();
-  fRootFilePhoton->Close();
+  //Output data file
+  G4String fileNameOut = "output.root";
+  fRootFileOut = new TFile(fileNameOut, "RECREATE");
+  outTree->Write();
+  fRootFileOut->Close();
 }
 
   
