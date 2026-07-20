@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import sys
+from math import pi
 
 data_CsI_Tl = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/EffectiveArea_CsI_Tl.txt", delimiter=",", dtype=float)
 data_CeBr3 = np.loadtxt("/home/skyes/Geant4_MSFC/Geant4_Rango/scripts/DetCharacterization_txt/EffectiveArea_CeBr3.txt", delimiter=",", dtype=float)
@@ -42,26 +43,29 @@ else:
 
 thick_det = input("Do you want to change the thickness of your detector? (yes/no): ")
 if thick_det == "yes":
-    thickness_in_det = float(input("Choose Your Window Thickness: "))
+    thickness_in_det = float(input("Choose Your Detector Thickness (cm): "))
     print("You entered:", thickness_in_det, "cm")
-    if (det_data == "1"):
-        thick_det = dataBe1MM
-    elif (det_data == "2"):
-        thick_det = dataMg1MM
-    elif (det_data == "3"):
-        thick_det = dataAl1MM
-    elif (det_data == "4"):
-        thick_det = dataAl2MM
+    if (det_input == "1"):
+        Aeff_det = data_CsI_Tl
+    elif (det_input == "2"):
+        Aeff_det = data_NaI_Tl
+    elif (det_input == "3"):
+        Aeff_det = data_CeBr3
+    elif (det_input == "4"):
+        Aeff_det = data_BGO
     else:
         print("Must Enter A Window Thickness To Continue!")
         sys.exit()
-    geom_thick =  1.5
-    atten_Length_1 = -thickness_OG_1/ np.log(trans_Ratio_1[:,1])
-    atten_Length_arr_1 = np.column_stack((trans_Ratio_1[:,0], atten_Length_1))
-    new_thick_1 = thickness_in_1
-    new_trans_1 = np.exp(-new_thick_1/atten_Length_arr_1[:,1])
-    new_trans_arr_1 = np.column_stack((trans_Ratio_1[:,0], new_trans_1))
-    win_data_1 = new_trans_arr_1
+    geom_rad = 6.35
+    geom_area = pi * pow(geom_rad,2)
+    det_thickness_OG = 1.5
+    clipped_aeff_arr = np.clip(Aeff_det[:,1], 0, geom_area-(1e-12))
+    atten_Length_det = -det_thickness_OG/ np.log(1 - (clipped_aeff_arr/geom_area))
+    atten_Length_arr_det = np.column_stack((clipped_aeff_arr, atten_Length_det))
+    new_thick_det = thickness_in_det
+    new_aeff_det = geom_area*(1 - np.exp(-new_thick_det/atten_Length_arr_det[:,1]))
+    new_aeff_det_arr = np.column_stack((Aeff_det[:,0], clipped_aeff_arr))
+    det_data = new_aeff_det_arr
 
 print("Window Choices (type the number associated with the window): ")
 print("(1) Be_1mm ")
@@ -101,10 +105,10 @@ else:
     print("Must Enter A Window To Continue!")
     sys.exit()
 
-thick_win_1 = input("Do you want to change the thickness of your window? (yes/no): ")
 print("Note: Not applicable to Teflon")
+thick_win_1 = input("Do you want to change the thickness of your window? (yes/no): ")
 if thick_win_1 == "yes":
-    thickness_in_1 = float(input("Choose Your Window Thickness: "))
+    thickness_in_1 = float(input("Choose Your Window Thickness (cm): "))
     print("You entered:", thickness_in_1, "cm")
     if (win_input_1 == "1"):
         win_thick_1 = dataBe1MM
@@ -193,9 +197,8 @@ else:
     sys.exit()
 
 thick_win_2 = input("Do you want to change the thickness of your window? (yes/no): ")
-print("Note: Not applicable to Teflon")
 if thick_win_2 == "yes":
-    thickness_in_2 = float(input("Choose Your Window Thickness: "))
+    thickness_in_2 = float(input("Choose Your Window Thickness (cm): "))
     print("You entered:", thickness_in_2, "cm")
     if (win_input_2 == "1"):
         win_thick_2 = dataBe2MM

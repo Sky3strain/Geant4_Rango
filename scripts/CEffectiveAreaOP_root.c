@@ -14,7 +14,7 @@ void CEffectiveAreaOP_root(){
     //Create variables
     Int_t photonCount;
     Double_t energy;
-    Double_t r_throw = 7;
+    Double_t r_throw = 3.5;
     Double_t pi = M_PI;
     Double_t A_throw = (pi)*(pow(r_throw,2));
 

@@ -14,7 +14,7 @@ void CEffectiveArea_root_Thick(){
     //Create variables
     Double_t edep;
     Double_t thickness;
-    Double_t r_throw = 7;
+    Double_t r_throw = 3.5;
     Double_t pi = M_PI;
     Double_t A_throw = (pi)*(pow(r_throw,2));
 
